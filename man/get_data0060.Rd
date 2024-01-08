@@ -3,9 +3,6 @@
 \name{get_data0060}
 \alias{get_data0060}
 \title{Data 0060 : Espèces floristiques à statut}
-\source{
-
-}
 \usage{
 get_data0060()
 }

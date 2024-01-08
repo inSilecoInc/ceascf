@@ -3,9 +3,6 @@
 \name{get_data0059}
 \alias{get_data0059}
 \title{Data 0059 : Espèces fauniques à statut}
-\source{
-
-}
 \usage{
 get_data0059()
 }

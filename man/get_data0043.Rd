@@ -3,9 +3,6 @@
 \name{get_data0043}
 \alias{get_data0043}
 \title{Data 0043 : Computerized Database of Québec Seabirds (CDQS)}
-\source{
-
-}
 \usage{
 get_data0043()
 }

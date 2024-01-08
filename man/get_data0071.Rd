@@ -3,9 +3,6 @@
 \name{get_data0071}
 \alias{get_data0071}
 \title{Data 0071 : Mouillages et zones de mouillages canadiennes}
-\source{
-
-}
 \usage{
 get_data0071()
 }

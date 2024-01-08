@@ -3,9 +3,6 @@
 \name{get_data0046}
 \alias{get_data0046}
 \title{Data 0046 : Dragage}
-\source{
-
-}
 \usage{
 get_data0046()
 }

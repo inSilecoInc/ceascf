@@ -29,9 +29,9 @@ rep_hyperlien <- function(texte, url) {
   nl <- length(texte)
   hyperlien <- character(nl)
 
-  for(i in 1:nl) {
-    if(!is.null(url[i])) {
-      hyperlien[i] <- paste0("[",texte[i],"](",url[i],")")
+  for (i in 1:nl) {
+    if (!is.null(url[i])) {
+      hyperlien[i] <- paste0("[", texte[i], "](", url[i], ")")
     } else {
       hyperlien[i] <- texte[i]
     }
@@ -75,7 +75,7 @@ removeCoast <- function(dat) {
 
   # -----
   dat <- st_drop_geometry(dat)
-  for(i in 1:ncol(dat)) dat[nid, i] <- NA
+  for (i in 1:ncol(dat)) dat[nid, i] <- NA
 
   # -----
   dat <- cbind(grid1p, dat)
@@ -94,7 +94,7 @@ modif_md <- function(dat) {
 
 
 # ------------------------------------------------------------------------------
-# To acknowledge data sources for each sections 
+# To acknowledge data sources for each sections
 show_source <- function(dat, lang = "fr") {
   nid <- length(dat)
   nm <- paste(dat, collapse = ", ")
@@ -111,4 +111,10 @@ show_source <- function(dat, lang = "fr") {
       glue("> *The unique identifiers given to the data presented in this section are:* ***{nm}***. *Refer to the following section and to [Appendix 1](#annexe1) for more details on these data.*")
     }
   }
+}
+
+# ------------------------------------------------------------------------------
+#' Check if folder exists and create if not
+chk_create <- function(path) {
+  if (!file.exists(path)) dir.create(path, recursive = TRUE)
 }

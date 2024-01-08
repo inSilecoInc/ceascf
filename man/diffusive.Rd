@@ -24,8 +24,5 @@ diffusive(dat, field, threshold, globalmaximum, decay, distance, increment)
 \description{
 Function to evaluate the influence area of a stressor using a passive diffusive model
 }
-\details{
-
-}
 \keyword{cumulative}
 \keyword{footprint}

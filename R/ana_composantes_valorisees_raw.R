@@ -51,10 +51,12 @@ ana_composantes_valorisees_raw <- function() {
   #
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # -----
-  st_write(obj = composantes_valorisees_raw,
-           dsn = "./data/data-output/composantes_valorisees_raw.geojson",
-           delete_dsn = TRUE,
-           quiet = TRUE)
+  st_write(
+    obj = composantes_valorisees_raw,
+    dsn = "./data/data-output/composantes_valorisees_raw.geojson",
+    delete_dsn = TRUE,
+    quiet = TRUE
+  )
   # ------------------------------------------------------------------------- #}
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #

@@ -16,8 +16,5 @@ cumulativeEffects(stress, valued, vulnerability, individual_cea = TRUE)
 \description{
 Function to evaluate cumulative effects of stressors on valued components
 }
-\details{
-
-}
 \keyword{cumulative}
 \keyword{effects}

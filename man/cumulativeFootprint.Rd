@@ -14,8 +14,5 @@ cumulativeFootprint(dat, normaliser = FALSE)
 \description{
 Function to evaluate cumulative footprint of stressors and valued components
 }
-\details{
-
-}
 \keyword{cumulative}
 \keyword{footprint}

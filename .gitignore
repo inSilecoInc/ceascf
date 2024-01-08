@@ -48,6 +48,7 @@ data/data-output/*.geojson
 data/data-output/*.csv
 data/data-output/cea_stresseur
 data/data-output/cea_composante_valorisee
+data/ceascf/
 
 ## Exceptions ----
 !data/data-raw/data0063*
@@ -78,3 +79,4 @@ review/
 report_fr/beauchesne_et_al-ceanav-traduction*
 report_en/beauchesne_et_al-ceanav-traduction*
 report_en/~$auchesne_et_al*
+

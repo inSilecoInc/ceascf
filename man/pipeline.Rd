@@ -9,10 +9,10 @@ pipeline(
   pipeline_data = FALSE,
   pipeline_integration = FALSE,
   pipeline_vulnerability = FALSE,
-  pipeline_analysis = FALSE,
+  pipeline_analysis = TRUE,
   pipeline_figures = FALSE,
   pipeline_fiches = FALSE,
-  pipeline_report = TRUE,
+  pipeline_report = FALSE,
   pipeline_pkgsite = FALSE,
   pipeline_logo = FALSE
 )
