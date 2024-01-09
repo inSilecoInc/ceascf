@@ -8,21 +8,22 @@
 #'
 #' @examples
 #' fig_cumulative_composantes_valorisees()
-fig_cumulative_composantes_valorisees <- function(lang = "fr") {
+fig_cumulative_composantes_valorisees_ceascf <- function(lang = "fr") {
   # ------------------
   global_parameters()
 
   # output
   if (lang == "fr") {
-    output <- glue("./figures/figures-output/")
+    output <- here::here("figures", "ceascf", "figures-output")
   } else if (lang == "en") {
-    output <- glue("./figures_en/figures-output/")
+    output <- here::here("figures_en", "ceascf", "figures-output")
   }
+  chk_create(output)
 
   # Function to cycle through elements to plot
   temp <- function(dat, data_id, main = "", subtitle = "") {
     png(
-      glue("{output}{data_id}.png"),
+      here::here(output, glue::glue("{data_id}.png")),
       res = global_param$figures$resolution,
       width = global_param$figures$width,
       height = global_param$figures$height,
@@ -39,14 +40,12 @@ fig_cumulative_composantes_valorisees <- function(lang = "fr") {
   }
 
   # -----
-  load_output("cumulative_composantes_valorisees")
-  dat <- cumulative_composantes_valorisees
-
+  dat <- sf::st_read(here::here("data", "ceascf", "data-output", "cumulative_composantes_valorisees.geojson"))
 
   # -----
   data_id <- c(
-    "cumulative_cv", "cumulative_cv_norm", "cumulative_cv_berge", "cumulative_cv_habitat",
-    "cumulative_cv_mammiferes_marins", "cumulative_cv_site"
+    "cumulative_cv", "cumulative_cv_norm", "cumulative_cv_berge",
+    "cumulative_cv_habitat", "cumulative_cv_site"
   )
 
   # -----
@@ -56,7 +55,6 @@ fig_cumulative_composantes_valorisees <- function(lang = "fr") {
       "Composantes valorisées cumulées normalisées",
       "Intégrité des berges cumulée",
       "Habitats cumulés",
-      "Mammifères marins cumulés",
       "Sites d'intérêt cumulés"
     )
   } else if (lang == "en") {
@@ -65,7 +63,6 @@ fig_cumulative_composantes_valorisees <- function(lang = "fr") {
       "Cumulative valued components normalized",
       "Cumulative bank integrity",
       "Cumulative habitats",
-      "Cumulative marine mammals",
       "Cumulative areas of interest"
     )
   }
@@ -77,7 +74,6 @@ fig_cumulative_composantes_valorisees <- function(lang = "fr") {
       "Somme des composantes valorisées individuelles divisée\npar le nombre de catégories",
       "Somme des catégories de berges",
       "Somme  des types d'habitats",
-      "Somme de la présence de mammifères marins",
       "Somme des sites d'intérêt"
     )
   } else if (lang == "en") {
@@ -86,7 +82,6 @@ fig_cumulative_composantes_valorisees <- function(lang = "fr") {
       "Sum of individual valued components divided\nby the number of categories",
       "Sum of bank integrity categories",
       "Sum of habitat categories",
-      "Sum of marine mammals presence",
       "Sum of areas of interest categories"
     )
   }
@@ -98,27 +93,25 @@ fig_cumulative_composantes_valorisees <- function(lang = "fr") {
   # -----
   if (lang == "fr") {
     # Stack individual figures using magick package
-    i1 <- magick::image_read("figures/figures-output/cumulative_cv_berge.png")
-    i2 <- magick::image_read("figures/figures-output/cumulative_cv_habitat.png")
-    i3 <- magick::image_read("figures/figures-output/cumulative_cv_mammiferes_marins.png")
-    i4 <- magick::image_read("figures/figures-output/cumulative_cv_site.png")
+    i1 <- magick::image_read(here::here(output, "cumulative_cv_berge.png"))
+    i2 <- magick::image_read(here::here(output, "cumulative_cv_habitat.png"))
+    i4 <- magick::image_read(here::here(output, "cumulative_cv_site.png"))
 
     l1 <- image_append(c(i1, i2))
-    l2 <- image_append(c(i3, i4))
+    l2 <- image_append(c(i4))
 
     img <- image_append(c(l1, l2), stack = TRUE)
-    magick::image_write(img, path = "./figures/figures-output/cumulative_cv_panel.png", format = "png")
+    magick::image_write(img, path = here::here(output, "cumulative_cv_panel.png"), format = "png")
   } else if (lang == "en") {
     # Stack individual figures using magick package
-    i1 <- magick::image_read("figures_en/figures-output/cumulative_cv_berge.png")
-    i2 <- magick::image_read("figures_en/figures-output/cumulative_cv_habitat.png")
-    i3 <- magick::image_read("figures_en/figures-output/cumulative_cv_mammiferes_marins.png")
-    i4 <- magick::image_read("figures_en/figures-output/cumulative_cv_site.png")
+    i1 <- magick::image_read(here::here(output, "cumulative_cv_berge.png"))
+    i2 <- magick::image_read(here::here(output, "cumulative_cv_habitat.png"))
+    i4 <- magick::image_read(here::here(output, "cumulative_cv_site.png"))
 
     l1 <- image_append(c(i1, i2))
-    l2 <- image_append(c(i3, i4))
+    l2 <- image_append(c(i4))
 
     img <- image_append(c(l1, l2), stack = TRUE)
-    magick::image_write(img, path = "./figures_en/figures-output/cumulative_cv_panel.png", format = "png")
+    magick::image_write(img, path = here::here(output, "cumulative_cv_panel.png"), format = "png")
   }
 }

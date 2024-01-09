@@ -205,4 +205,17 @@ pipeline_ceascf <- function() {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
+  # Figures
+  out <- here::here("figures", "ceascf")
+  chk_create(out)
+
+  # Integrated figures (not necessary)
+  # Analyses
+  fig_cumulative_composantes_valorisees_ceascf()
+  fig_cumulative_exposure_ceascf()
+  fig_cumulative_effects_ceascf()
+  fig_regional_contribution_ceascf()
+  fig_metanetwork_ceascf()
+  fig_region_cea_km2_ceascf()
+  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 }
