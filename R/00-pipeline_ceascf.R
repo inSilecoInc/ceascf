@@ -210,6 +210,27 @@ pipeline_ceascf <- function() {
   chk_create(out)
 
   # Integrated figures (not necessary)
+
+  # Stressors
+  files <- dir(here::here("figures", "figures-output"))
+  files <- files[stringr::str_detect(files, "_st_")]
+  input <- here::here("figures", "figures-output")
+  output <- here::here("figures", "ceascf", "figures-output")
+  for (i in 1:length(files)) {
+    file.copy(
+      here::here(input, files[i]),
+      here::here(output, files[i])
+    )
+  }
+  file.copy(
+    here::here(input, "cumulative_st.png"),
+    here::here(output, "cumulative_st.png")
+  )
+  file.copy(
+    here::here(input, "cumulative_hotspots.png"),
+    here::here(output, "cumulative_hotspots.png")
+  )
+
   # Analyses
   fig_cumulative_composantes_valorisees_ceascf()
   fig_cumulative_exposure_ceascf()
@@ -217,5 +238,35 @@ pipeline_ceascf <- function() {
   fig_regional_contribution_ceascf()
   fig_metanetwork_ceascf()
   fig_region_cea_km2_ceascf()
+  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
+
+  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
+  # Report
+  file.copy("./figures/", "./report_ceascf/", recursive = TRUE)
+  suppressWarnings({
+    setwd("./report_ceascf/")
+
+    # HTML format
+    bookdown::render_book(
+      input = "index.Rmd",
+      output_format = "bookdown::gitbook",
+      config_file = "_bookdown.yml"
+    )
+
+    # # PDF format
+    # bookdown::render_book(input = "index.Rmd",
+    #                       output_format = "bookdown::pdf_book",
+    #                       config_file = "_bookdown.yml")
+
+    setwd("../")
+  })
+
+  # WARNING: Temporary pipeline to export report only to another repo.
+  # TODO: This is not reproducible and should be removed from the pipeline as soon as this
+  #       repository can be made available publicly
+  # unlink("../Rapport/docs/", recursive = TRUE)
+  unlink("./report_ceascf/figures/", recursive = TRUE)
+  # file.copy("./report_ceascf/docs", "../Rapport/", recursive = TRUE) # uncomment
+  # file.copy("./report_fr/docs/", "./", recursive = TRUE) # delete
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 }

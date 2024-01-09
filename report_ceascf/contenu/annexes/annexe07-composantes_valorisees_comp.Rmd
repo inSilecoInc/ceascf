@@ -1,0 +1,72 @@
+# Annexe 7 {.unnumbered #annexe7}
+
+Équivalences entre les composantes valorisées considérées pour l'évaluation des effets cumulatifs des activités maritimes dans le Saint-Laurent et le Saguenay et celles retrouvées dans la matrice de vulnérabilité des habitats proposée par @clarkemurray2015a.
+
+```{r cvcomp}
+tab <- data.frame(
+  cv = c(
+    "Espèces à statut : Espèces fauniques menacées",
+    "Espèces à statut : Espèces fauniques susceptibles",
+    "Espèces à statut : Espèces fauniques vulnérables",
+    "Espèces à statut : Espèces floristiques menacées",
+    "Espèces à statut : Espèces floristiques susceptibles",
+    "Espèces à statut : Espèces floristiques vulnérables",
+    "Espèces à statut : Espèces menacées LEP",
+    "Espèces à statut : Espèces en voie de disparition LEP",
+    "Milieux naturels : Meuble sans falaise",
+    "Milieux naturels : Rocheuse sans escarpement",
+    "Milieux naturels : Rocheuse sans falaise",
+    "Milieux naturels : Terrasse de plage",
+    "Milieux naturels : Terrasse fluviale",
+    "Cycles de vie : Frayères",
+    "Cycles de vie : Habitats d’alevinage",
+    "Cycles de vie : Habitats importants pour les oiseaux",
+    "Milieux naturels : Eau peu profonde",
+    "Milieux naturels : Marais",
+    "Milieux naturels : Marécage",
+    "Milieux naturels : Milieux naturels",
+    "Milieux naturels : Gisements coquilliers",
+    "Milieux naturels : Zostères",
+    "Milieux naturels : Herbiers aquatiques",
+    "Milieux naturels : Zones inondables",
+    "Milieux naturels : Biovolume herbiers aquatique - faible",
+    "Milieux naturels : Biovolume herbiers aquatique - modéré",
+    "Milieux naturels : Biovolume herbiers aquatique - élevé"
+  ),
+
+  clark = c(
+    "NA",
+    "NA",
+    "NA",
+    "NA",
+    "NA",
+    "NA",
+    "NA",
+    "NA",
+    "Tidal flat",
+    "Rocky intertidal",
+    "Rocky intertidal",
+    "Beach",
+    "Saltmarsh",
+    "NA",
+    "NA",
+    "NA",
+    "Saltmarsh",
+    "Saltmarsh",
+    "Saltmarsh",
+    "Saltmarsh",
+    "Nearshore soft bottom",
+    "Seagrass",
+    "Kelp forest",
+    "Rocky intertidal, tidal flats, saltmarsh",
+    "Algal zone, Eelgrass",
+    "Algal zone, Eelgrass",
+    "Algal zone, Eelgrass"
+  ))
+
+tab %>%
+  knitr::kable(
+    col.names = c("Composantes valorisées", "Équivalences"),
+    row.names = FALSE
+  )
+```
