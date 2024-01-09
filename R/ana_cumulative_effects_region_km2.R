@@ -11,7 +11,7 @@
 #' @details Cette fonction effectue une partie des analyses du projet d'évaluation des effets cumulatifs
 #'
 
-ana_cumulative_effects_region_km2 <- function() {
+ana_cumulative_effects_region_km2 <- function(st_files = NULL, cv_files = NULL, out = "data/data-output") {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # Notes
   # ------------------------------------
@@ -24,73 +24,101 @@ ana_cumulative_effects_region_km2 <- function() {
   # -----
   # Identify which regions intersect with which grid cells
   uid <- list()
-  for(i in 1:nrow(data0065)) {
-    uid[[i]] <- st_intersects(data0065[i,], grid1p) %>%
-    unlist()
+  for (i in 1:nrow(data0065)) {
+    uid[[i]] <- st_intersects(data0065[i, ], grid1p) %>%
+      unlist()
   }
 
   # -----
   # Identify which regions intersect with any grid cell
   iid <- logical(length(uid))
-  for(i in 1:nrow(data0065)) iid[i] <- length(uid[[i]]) > 10
+  for (i in 1:nrow(data0065)) iid[i] <- length(uid[[i]]) > 10
 
   # -----
   # Keep only regions with data
   data0065 <- data0065[iid, ]
   uid <- uid[iid]
 
-  load_output("composantes_valorisees_format")
-  load_output("stresseurs_format")
+  # -----
+  if (is.null(st_files)) {
+    load_output("stresseurs_format")
+  } else {
+    stresseurs_format <- sf::st_read(st_files)
+  }
+
+  if (is.null(cv_files)) {
+    load_output("composantes_valorisees_format")
+  } else {
+    composantes_valorisees_format <- sf::st_read(cv_files)
+  }
+
   cv <- st_drop_geometry(composantes_valorisees_format)
   st <- st_drop_geometry(stresseurs_format)
 
   # -----
-  cekm <- matrix(ncol = ncol(st)+3, nrow = nrow(data0065), data = 0,
-                 dimnames = list(c(), c("region","area","cea",colnames(st)))) %>%
-          data.frame()
+  cekm <- matrix(
+    ncol = ncol(st) + 3, nrow = nrow(data0065), data = 0,
+    dimnames = list(c(), c("region", "area", "cea", colnames(st)))
+  ) %>%
+    data.frame()
 
   # -----
   cekm$region <- data0065$RES_NM_REG
 
   # -----
-  for(i in 1:length(uid)) cekm$area[i] <- length(uid[[i]])
+  for (i in 1:length(uid)) cekm$area[i] <- length(uid[[i]])
 
   # Add dfs for individuals cvs
+  # !! This is ugly and inefficient, but it works.. all of it could be done in a single df with much less lines of code
+  nm <- colnames(composantes_valorisees_format)
   cekm_berge <- cekm_habitat <- cekm_mammiferes_marins <- cekm_site <- cekm
   cv_meta <- read.csv("./data/data-metadata/metadata_composantes_valorisees.csv")
-  berge <- paste0("berge_",cv_meta$accronyme[cv_meta$comp_val == "berge"])
-  habitat <- paste0("habitat_",cv_meta$accronyme[cv_meta$comp_val == "habitat"])
-  mammiferes_marins <- paste0("mammiferes_marins_",cv_meta$accronyme[cv_meta$comp_val == "mammiferes_marins"])
-  site <- paste0("site_",cv_meta$accronyme[cv_meta$comp_val == "site"])
+
+  berge <- paste0("berge_", cv_meta$accronyme[cv_meta$comp_val == "berge"])
+  berge <- berge[berge %in% nm]
+  nb <- length(berge) > 0
+
+  habitat <- paste0("habitat_", cv_meta$accronyme[cv_meta$comp_val == "habitat"])
+  habitat <- habitat[habitat %in% nm]
+  nh <- length(habitat) > 0
+
+  mammiferes_marins <- paste0("mammiferes_marins_", cv_meta$accronyme[cv_meta$comp_val == "mammiferes_marins"])
+  mammiferes_marins <- mammiferes_marins[mammiferes_marins %in% nm]
+  nmm <- length(mammiferes_marins) > 0
+
+  site <- paste0("site_", cv_meta$accronyme[cv_meta$comp_val == "site"])
+  site <- site[site %in% nm]
+  ns <- length(site) > 0
+
 
   # -----
   # Now get metrics for each stressor
-  folder <- "data/data-output/cea_stresseur/"
+  folder <- here::here(out, "cea_stresseur/")
   files <- dir(folder)
-  stNames <- gsub("cea_", "", files) %>% gsub(".csv","",.)
-  for(i in 1:length(files)) {
+  stNames <- gsub("cea_", "", files) %>% gsub(".csv", "", .)
+  for (i in 1:length(files)) {
     # ---
-    dat <- read.csv(glue("{folder}{files[i]}"))
+    dat <- read.csv(here::here(folder, files[i]))
 
     # ---
     # Iterate over regions
     # TODO: Remove na.rm = TRUE
-    for(j in 1:nrow(cekm)) {
+    for (j in 1:nrow(cekm)) {
       cekm[j, stNames[i]] <- sum(dat[uid[[j]], ], na.rm = TRUE) / cekm$area[j]
-      cekm_berge[j, stNames[i]] <- sum(dat[uid[[j]], berge], na.rm = TRUE) / cekm$area[j]
-      cekm_habitat[j, stNames[i]] <- sum(dat[uid[[j]], habitat], na.rm = TRUE) / cekm$area[j]
-      cekm_mammiferes_marins[j, stNames[i]] <- sum(dat[uid[[j]], mammiferes_marins], na.rm = TRUE) / cekm$area[j]
-      cekm_site[j, stNames[i]] <- sum(dat[uid[[j]], site], na.rm = TRUE) / cekm$area[j]
+      if (nb) cekm_berge[j, stNames[i]] <- sum(dat[uid[[j]], berge], na.rm = TRUE) / cekm$area[j]
+      if (nh) cekm_habitat[j, stNames[i]] <- sum(dat[uid[[j]], habitat], na.rm = TRUE) / cekm$area[j]
+      if (nmm) cekm_mammiferes_marins[j, stNames[i]] <- sum(dat[uid[[j]], mammiferes_marins], na.rm = TRUE) / cekm$area[j]
+      if (ns) cekm_site[j, stNames[i]] <- sum(dat[uid[[j]], site], na.rm = TRUE) / cekm$area[j]
     }
   }
 
   # ---
-  for(i in 1:nrow(cekm)) {
+  for (i in 1:nrow(cekm)) {
     cekm$cea[i] <- round(sum(cekm[i, stNames]), 6)
-    cekm_berge$cea[i] <- round(sum(cekm_berge[i, stNames]), 6)
-    cekm_habitat$cea[i] <- round(sum(cekm_habitat[i, stNames]), 6)
-    cekm_mammiferes_marins$cea[i] <- round(sum(cekm_mammiferes_marins[i, stNames]), 6)
-    cekm_site$cea[i] <- round(sum(cekm_site[i, stNames]), 6)
+    if (nb) cekm_berge$cea[i] <- round(sum(cekm_berge[i, stNames]), 6)
+    if (nh) cekm_habitat$cea[i] <- round(sum(cekm_habitat[i, stNames]), 6)
+    if (nmm) cekm_mammiferes_marins$cea[i] <- round(sum(cekm_mammiferes_marins[i, stNames]), 6)
+    if (ns) cekm_site$cea[i] <- round(sum(cekm_site[i, stNames]), 6)
   }
 
 
@@ -100,24 +128,37 @@ ana_cumulative_effects_region_km2 <- function() {
   #
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   write.csv(cekm,
-            file = "./data/data-output/cumulative_effects_region_km2.csv",
-            row.names = FALSE)
+    file = here::here(out, "cumulative_effects_region_km2.csv"),
+    row.names = FALSE
+  )
 
-  write.csv(cekm_berge,
-            file = "./data/data-output/cumulative_effects_region_km2_berge.csv",
-            row.names = FALSE)
+  if (nb) {
+    write.csv(cekm_berge,
+      file = here::here(out, "cumulative_effects_region_km2_berge.csv"),
+      row.names = FALSE
+    )
+  }
 
-  write.csv(cekm_habitat,
-            file = "./data/data-output/cumulative_effects_region_km2_habitat.csv",
-            row.names = FALSE)
+  if (nh) {
+    write.csv(cekm_habitat,
+      file = here::here(out, "cumulative_effects_region_km2_habitat.csv"),
+      row.names = FALSE
+    )
+  }
 
-  write.csv(cekm_mammiferes_marins,
-            file = "./data/data-output/cumulative_effects_region_km2_mammiferes_marins.csv",
-            row.names = FALSE)
+  if (nmm) {
+    write.csv(cekm_mammiferes_marins,
+      file = here::here(out, "cumulative_effects_region_km2_mammiferes_marins.csv"),
+      row.names = FALSE
+    )
+  }
 
-  write.csv(cekm_site,
-            file = "./data/data-output/cumulative_effects_region_km2_site.csv",
-            row.names = FALSE)
+  if (ns) {
+    write.csv(cekm_site,
+      file = here::here(out, "cumulative_effects_region_km2_site.csv"),
+      row.names = FALSE
+    )
+  }
   # ------------------------------------------------------------------------- #}
 
 

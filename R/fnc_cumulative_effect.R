@@ -13,20 +13,19 @@
 #' @details
 #'
 
-cumulativeEffects <- function(stress, valued, vulnerability, individual_cea = TRUE) {
-
+cumulativeEffects <- function(stress, valued, vulnerability, individual_cea = TRUE, out = "data/data-output") {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
   # Evaluate individual effects
   cumulative_effects <- list()
-  for(i in 1:nrow(stress)) {
+  for (i in 1:nrow(stress)) {
     # Individual risk
     ## This provides an evaluation of "risk", i.e. the effect IF the VC is present (=1)
     ## Essentially evaluates the Si * ui,j portion of the Halpern equation
-    risk <- sweep(vulnerability, MARGIN=2, stress[i, ], `*`)
+    risk <- sweep(vulnerability, MARGIN = 2, stress[i, ], `*`)
 
     # Individual effects
-    cumulative_effects[[i]] <- sapply(risk, '*', valued[i, ])
+    cumulative_effects[[i]] <- sapply(risk, "*", valued[i, ])
 
     # Cumulative risk (IF YOU WANT CUMULATIVE EFFECTS TO SINGLE VS RIGHT NOW RUN THIS)
     ## Evaluation of the cumulative "risk", i.e. the sum of all risks for each VC
@@ -40,47 +39,48 @@ cumulativeEffects <- function(stress, valued, vulnerability, individual_cea = TR
 
   if (individual_cea) {
     # Export information on effects predicted by individual stressors
-    folder <- "data/data-output/cea_stresseur/"
+    folder <- here::here(out, "cea_stresseur")
     if (!file.exists(folder)) dir.create(folder)
 
     # Iterate over stressors
-    for(i in 1:length(st)) {
+    for (i in 1:length(st)) {
       temp <- cumulative_effects
 
       # Iterate over grid cells
-      for(j in 1:length(temp)) {
+      for (j in 1:length(temp)) {
         temp[[j]] <- temp[[j]][, st[i]] %>%
-                     t() %>%
-                     data.frame()
+          t() %>%
+          data.frame()
       }
 
       # Single data.frame
       temp <- bind_rows(temp)
 
       # Export
-      write.csv(temp, glue("{folder}cea_{st[i]}.csv"), row.names = FALSE)
+      write.csv(temp, here::here(folder, glue("cea_{st[i]}.csv")), row.names = FALSE)
     }
 
     # Export information on effects predicted on individual valued components
-    folder <- "data/data-output/cea_composante_valorisee/"
+    folder <- here::here(out, "cea_composante_valorisee")
+
     if (!file.exists(folder)) dir.create(folder)
 
     # Iterate over valued components
-    for(i in 1:length(vc)) {
+    for (i in 1:length(vc)) {
       temp <- cumulative_effects
 
       # Iterate over grid cells
-      for(j in 1:length(temp)) {
+      for (j in 1:length(temp)) {
         temp[[j]] <- temp[[j]][vc[i], ] %>%
-                     t() %>%
-                     data.frame()
+          t() %>%
+          data.frame()
       }
 
       # Single data.frame
       temp <- bind_rows(temp)
 
       # Export
-      write.csv(temp, glue("{folder}cea_{vc[i]}.csv"), row.names = FALSE)
+      write.csv(temp, here::here(folder, glue("cea_{vc[i]}.csv")), row.names = FALSE)
     }
   }
 
@@ -89,7 +89,7 @@ cumulativeEffects <- function(stress, valued, vulnerability, individual_cea = TR
   # TODO: remove na.rm from equation, there should not be any and if there are is a sign that there is a problem to resolve, so I want to keep it
   data(grid1p)
   ce <- lapply(cumulative_effects, sum) %>%
-               unlist()
+    unlist()
   grid1p$cumulative_effects <- ce
 
   return(grid1p)

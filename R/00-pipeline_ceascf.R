@@ -134,81 +134,75 @@ pipeline_ceascf <- function() {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
-  # Ananlyses
-  # Stresseurs et composantes valorisées
-  ana_stresseurs_raw()
-  ana_composantes_valorisees_raw()
-
-  # Transformer stresseurs et composantes valorisées
-  ana_stresseurs_format()
-  ana_composantes_valorisees_format()
-
-  # Stresseurs, hotspots et composantes valorisées cumulés
-  ana_cumulative_stresseurs()
-  ana_cumulative_hotspots()
-  ana_cumulative_composantes_valorisees()
-
-  # Cumulative exposure
-  ana_cumulative_exposure()
-
-  # Cumulative effects
-  ana_cumulative_effects()
-
-  # Cumulative effects per km2 for valued components
-  ana_cumulative_effects_cv_km2()
-
-  # Cumulative effects per km2 for administrative regions
-  ana_cumulative_effects_region_km2()
-
-
-  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
-
-
-
-
-
-
-
-
-  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
-  # Filter VC outputs
+  # Filter VC and stressor output files for analyses
   out <- here::here("data", "ceascf", "data-output")
   chk_create(out)
   filt <- function(fl) {
-    sf::st_read(glue::glue("data/data-output/{fl}.geojson")) |>
+    x <- sf::st_read(glue::glue("data/data-output/{fl}.geojson")) |>
       dplyr::select(dplyr::matches(vcs)) |>
-      sf::st_write(glue::glue("data/data-output/{fl}.geojson"))
+      sf::st_write(glue::glue("data/ceascf/data-output/{fl}.geojson"))
   }
-  dat <- c("composantes_valorisees_raw", "composantes_valorisees_format", "cumulative_composantes_valorisees")
+  dat <- c("composantes_valorisees_raw", "composantes_valorisees_format")
   lapply(dat, filt)
-  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 
   # Copy stressor data (Filtering option should be added in case stressors are also filtered)
-  file.copy(
-    "data/data-output_full/stresseurs_raw.geojson",
-    "data/data-output/stresseurs_raw.geojson"
-  )
-  file.copy(
-    "data/data-output_full/stresseurs_format.geojson",
-    "data/data-output/stresseurs_format.geojson"
-  )
+  copy_out <- function(files) {
+    file.copy(
+      glue::glue("data/data-output/{files}.geojson"),
+      glue::glue("data/ceascf/data-output/{files}.geojson")
+    )
+  }
+  copy_out("stresseurs_raw")
+  copy_out("stresseurs_format")
+  copy_out("cumulative_stresseurs")
+  copy_out("cumulative_hotspots")
+  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 
 
-  # Analyses
-  # Stresseurs, hotspots et composantes valorisées cumulés
-  ana_cumulative_stresseurs()
-  ana_cumulative_hotspots()
-  ana_cumulative_composantes_valorisees()
+  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
+  # Ananlyses
+  out <- here::here("data", "ceascf", "data-output")
+  chk_create(out)
+
+  # Cumulative composantes valorisees
+  ana_cumulative_composantes_valorisees(
+    cv_files = here::here(out, "composantes_valorisees_format.geojson"),
+    out = out
+  )
 
   # Cumulative exposure
-  ana_cumulative_exposure()
+  out <- here::here("data", "ceascf", "data-output")
+  ana_cumulative_exposure(
+    st_files = here::here(out, "cumulative_stresseurs.geojson"),
+    cv_files = here::here(out, "cumulative_composantes_valorisees.geojson"),
+    out = out
+  )
 
   # Cumulative effects
-  ana_cumulative_effects()
+  out <- here::here("data", "ceascf", "data-output")
+  ana_cumulative_effects(
+    st_files = here::here(out, "stresseurs_format.geojson"),
+    cv_files = here::here(out, "composantes_valorisees_format.geojson"),
+    vuln_files = here::here("data", "ceascf", "data-integrated", "vulnerability.csv"),
+    out = out
+  )
 
   # Cumulative effects per km2 for valued components
-  ana_cumulative_effects_cv_km2()
+  out <- here::here("data", "ceascf", "data-output")
+  ana_cumulative_effects_cv_km2(
+    st_files = here::here(out, "stresseurs_format.geojson"),
+    cv_files = here::here(out, "composantes_valorisees_format.geojson"),
+    out = out
+  )
 
   # Cumulative effects per km2 for administrative regions
-  ana_cumulative_effects_region_km2()
+  out <- here::here("data", "ceascf", "data-output")
+  ana_cumulative_effects_region_km2(
+    st_files = here::here(out, "stresseurs_format.geojson"),
+    cv_files = here::here(out, "composantes_valorisees_format.geojson"),
+    out = out
+  )
+  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
+
+  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 }

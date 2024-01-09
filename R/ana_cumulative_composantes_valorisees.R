@@ -10,7 +10,7 @@
 #' @details Cette fonction effectue une partie des analyses du projet d'évaluation des effets cumulatifs
 #'
 
-ana_cumulative_composantes_valorisees <- function() {
+ana_cumulative_composantes_valorisees <- function(cv_files = NULL, out = "data/data-output") {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # Notes
   # ------------------------------------
@@ -27,45 +27,53 @@ ana_cumulative_composantes_valorisees <- function() {
   data(grid1p)
 
   # -----
-  load_output("composantes_valorisees_format")
+  if (is.null(cv_files)) {
+    load_output("composantes_valorisees_format")
+  } else {
+    composantes_valorisees_format <- sf::st_read(cv_files)
+  }
   cv <- st_drop_geometry(composantes_valorisees_format)
 
   # -----
   cv_cumul <- function(x, cv, normaliser = FALSE) {
     uid <- str_detect(colnames(x), cv)
-    dat <- cumulativeFootprint(x[,uid, drop = FALSE], normaliser)
+    if (sum(uid > 0)) {
+      dat <- cumulativeFootprint(x[, uid, drop = FALSE], normaliser)
+    } else {
+      dat <- NULL
+    }
     dat
   }
 
   # -----
-  berge <- cv_cumul(cv, "berge", normaliser = TRUE)
-  habitat <- cv_cumul(cv, "habitat", normaliser = TRUE)
-  mammiferes_marins <- cv_cumul(cv, "mammiferes_marins", normaliser = TRUE)
-  site <- cv_cumul(cv, "site", normaliser = TRUE)
+  cv_list <- list()
+  cv_list$berge <- cv_cumul(cv, "berge", normaliser = TRUE)
+  cv_list$habitat <- cv_cumul(cv, "habitat", normaliser = TRUE)
+  cv_list$mammiferes_marins <- cv_cumul(cv, "mammiferes_marins", normaliser = TRUE)
+  cv_list$site <- cv_cumul(cv, "site", normaliser = TRUE)
+  cv_list <- cv_list |> keep(~ length(.x) > 0)
+  cumulative_cv_norm <- dplyr::bind_cols(cv_list) |> rowSums()
+
 
   # -----
   cumulative_cv <- cumulativeFootprint(cv)
 
   # -----
-  cumulative_cv_norm <- berge + habitat + mammiferes_marins + site
+  cv_list <- list()
+  cv_list$cumulative_cv_berge <- cv_cumul(cv, "berge")
+  cv_list$cumulative_cv_habitat <- cv_cumul(cv, "habitat")
+  cv_list$cumulative_cv_mammiferes_marins <- cv_cumul(cv, "mammiferes_marins")
+  cv_list$cumulative_cv_site <- cv_cumul(cv, "site")
+  cv_list <- cv_list |> keep(~ length(.x) > 0)
 
   # -----
-  cumulative_cv_berge <- cv_cumul(cv, "berge")
-  cumulative_cv_habitat <- cv_cumul(cv, "habitat")
-  cumulative_cv_mammiferes_marins <- cv_cumul(cv, "mammiferes_marins")
-  cumulative_cv_site <- cv_cumul(cv, "site")
-
-
-  # -----
-  cumulative_composantes_valorisees <- cbind(
-    grid1p,
-    cumulative_cv,
-    cumulative_cv_norm,
-    cumulative_cv_berge,
-    cumulative_cv_habitat,
-    cumulative_cv_mammiferes_marins,
-    cumulative_cv_site
-   )
+  cumulative_composantes_valorisees <- list(
+    grid1p = grid1p,
+    cumulative_cv = cumulative_cv,
+    cumulative_cv_norm = cumulative_cv_norm,
+    cv_list
+  ) |>
+    dplyr::bind_cols()
 
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
@@ -74,10 +82,12 @@ ana_cumulative_composantes_valorisees <- function() {
   #
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # -----
-  st_write(obj = cumulative_composantes_valorisees,
-           dsn = "./data/data-output/cumulative_composantes_valorisees.geojson",
-           delete_dsn = TRUE,
-           quiet = TRUE)
+  st_write(
+    obj = cumulative_composantes_valorisees,
+    dsn = here::here(out, "cumulative_composantes_valorisees.geojson"),
+    delete_dsn = TRUE,
+    quiet = TRUE
+  )
   # ------------------------------------------------------------------------- #}
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #

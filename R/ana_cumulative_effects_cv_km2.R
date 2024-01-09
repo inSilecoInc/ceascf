@@ -11,15 +11,25 @@
 #' @details Cette fonction effectue une partie des analyses du projet d'évaluation des effets cumulatifs
 #'
 
-ana_cumulative_effects_cv_km2 <- function() {
+ana_cumulative_effects_cv_km2 <- function(st_files = NULL, cv_files = NULL, out = "data/data-output") {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # Notes
   # ------------------------------------
   #
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   # -----
-  load_output("composantes_valorisees_format")
-  load_output("stresseurs_format")
+  # -----
+  if (is.null(st_files)) {
+    load_output("stresseurs_format")
+  } else {
+    stresseurs_format <- sf::st_read(st_files)
+  }
+
+  if (is.null(cv_files)) {
+    load_output("composantes_valorisees_format")
+  } else {
+    composantes_valorisees_format <- sf::st_read(cv_files)
+  }
   cv <- st_drop_geometry(composantes_valorisees_format)
   st <- st_drop_geometry(stresseurs_format)
 
@@ -28,9 +38,11 @@ ana_cumulative_effects_cv_km2 <- function() {
   cv[, uid] <- apply(cv[, uid], 2, function(x) ifelse(x > 0, 1, NA))
 
   # -----
-  cekm <- matrix(ncol = ncol(st)+3, nrow = ncol(cv), data = 0,
-                 dimnames = list(c(), c("cv","area","cea",colnames(st)))) %>%
-          data.frame()
+  cekm <- matrix(
+    ncol = ncol(st) + 3, nrow = ncol(cv), data = 0,
+    dimnames = list(c(), c("cv", "area", "cea", colnames(st)))
+  ) %>%
+    data.frame()
 
   # -----
   cekm$cv <- colnames(cv)
@@ -40,16 +52,16 @@ ana_cumulative_effects_cv_km2 <- function() {
 
   # -----
   # Now get metrics for each valued component
-  folder <- "data/data-output/cea_composante_valorisee/"
+  folder <- here::here(out, "cea_composante_valorisee/")
   files <- dir(folder)
-  cvNames <- gsub("cea_", "", files) %>% gsub(".csv","",.)
-  for(i in 1:length(files)) {
+  cvNames <- gsub("cea_", "", files) %>% gsub(".csv", "", .)
+  for (i in 1:length(files)) {
     # ---
     uid <- cekm$cv == cvNames[i]
 
     # ---
-    dat <- read.csv(glue("{folder}{files[i]}")) %>%
-           colSums(na.rm = TRUE) / cekm$area[uid]
+    dat <- read.csv(here::here(folder, files[i])) %>%
+      colSums(na.rm = TRUE) / cekm$area[uid]
 
     # ---
     cekm[uid, names(dat)] <- round(dat, 6)
@@ -63,8 +75,9 @@ ana_cumulative_effects_cv_km2 <- function() {
   #
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~= #
   write.csv(cekm,
-            file = "./data/data-output/cumulative_effects_cv_km2.csv",
-            row.names = FALSE)
+    file = here::here(out, "cumulative_effects_cv_km2.csv"),
+    row.names = FALSE
+  )
   # ------------------------------------------------------------------------- #}
 
 
