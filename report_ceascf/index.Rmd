@@ -1,7 +1,7 @@
 ---
-title: "Évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et la rivière Saguenay – Projet pilote"
+title: "Extraction de données et filtre de l'évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et la rivière Saguenay pour le Servica Canadien de la Faune"
 # subtitle: "Rapport préliminaire"
-author: "David Beauchesne, Cindy Grant, Philippe Archambault"
+author: "David Beauchesne, Kevin Cazelles, Steve Vissault"
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 documentclass: scrbook
@@ -55,34 +55,25 @@ library(ceascf)
 
 # {-}
 
-#### Université Laval {-}
+#### inSileco {-}
 
 David Beauchesne, Ph.D. <br/>
-Chercheur postdoctoral<br/>
-david.beauchesne@hotmail.com<br/>
+david.beauchesne@insileco.io<br/>
 
 <br/>
 
-Cindy Grant<br/>
-Professionnelle de recherche<br/>
-cindy.grant@bio.ulaval.ca<br/>
+Kevin Cazelles, Ph.D. <br/>
+kevin.cazelles@insileco.io<br/>
 
 <br/>
 
-Philippe Archambault<br/>
-Professeur<br/>
-philippe.archambault@bio.ulaval.ca<br/>
+Steve Vissault, M.Sc.<br/>
+steve.vissault@insileco.io<br/>
 
 
-#### Transports Canada {-}
+#### Service Canadien de la Faune {-}
 
-Catherine Guillemette<br/>
-Conseillère principale en environnement<br/>
-catherine.guillemette@tc.gc.ca<br/>
+Patricia Désilets <br/>
+Patricia.Desilets@ec.gc.ca<br/>
 
 <br/>
-
-
-#### Citation {-}
-
-Beauchesne D, Grant C, Archambault P (2022) Évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et la rivière Saguenay – Projet pilote. Réalisé pour Transports Canada.

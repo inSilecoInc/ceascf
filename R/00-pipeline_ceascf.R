@@ -253,10 +253,12 @@ pipeline_ceascf <- function() {
       config_file = "_bookdown.yml"
     )
 
-    # # PDF format
-    # bookdown::render_book(input = "index.Rmd",
-    #                       output_format = "bookdown::pdf_book",
-    #                       config_file = "_bookdown.yml")
+    # PDF format
+    bookdown::render_book(
+      input = "index.Rmd",
+      output_format = "bookdown::pdf_book",
+      config_file = "_bookdown.yml"
+    )
 
     setwd("../")
   })
@@ -268,5 +270,15 @@ pipeline_ceascf <- function() {
   unlink("./report_ceascf/figures/", recursive = TRUE)
   # file.copy("./report_ceascf/docs", "../Rapport/", recursive = TRUE) # uncomment
   # file.copy("./report_fr/docs/", "./", recursive = TRUE) # delete
+  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
+
+  # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
+  # Export des données à fournir au SCF
+
+  # Données spatiales en format geopackage (.gpkg)
+  # Projection NAD 1983 Quebec Lambert Conique Conforme
+
+  # Création d'un README pour les fichiers exportés
+
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 }
