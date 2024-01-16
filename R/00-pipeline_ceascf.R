@@ -242,7 +242,8 @@ pipeline_ceascf <- function() {
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
   # Report
-  file.copy("./figures/", "./report_ceascf/", recursive = TRUE)
+  chk_create("./report_ceascf/figures/")
+  file.copy("./figures/ceascf/", "./report_ceascf/figures/", recursive = TRUE)
   suppressWarnings({
     setwd("./report_ceascf/")
 
@@ -266,10 +267,9 @@ pipeline_ceascf <- function() {
   # WARNING: Temporary pipeline to export report only to another repo.
   # TODO: This is not reproducible and should be removed from the pipeline as soon as this
   #       repository can be made available publicly
-  # unlink("../Rapport/docs/", recursive = TRUE)
   unlink("./report_ceascf/figures/", recursive = TRUE)
-  # file.copy("./report_ceascf/docs", "../Rapport/", recursive = TRUE) # uncomment
-  # file.copy("./report_fr/docs/", "./", recursive = TRUE) # delete
+  unlink("./docs/", recursive = TRUE)
+  file.copy("./report_ceascf/docs", "./", recursive = TRUE) # uncomment
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
