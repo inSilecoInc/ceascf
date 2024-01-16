@@ -273,12 +273,53 @@ pipeline_ceascf <- function() {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
-  # Export des données à fournir au SCF
+  # Export des données spatiales à fournir au SCF
+  #  - Données spatiales en format geopackage (.gpkg)
+  #  - Projection NAD 1983 Quebec Lambert Conique Conforme
 
-  # Données spatiales en format geopackage (.gpkg)
-  # Projection NAD 1983 Quebec Lambert Conique Conforme
+  # Function to export geopackages
+  exp_gpkg <- function(input, output, name) {
+    # Output folder
+    chk_create(output)
 
-  # Création d'un README pour les fichiers exportés
+    # Files
+    files <- dir(input, pattern = "geojson")
+
+    # Names
+    nm <- tools::file_path_sans_ext(files)
+
+    # Load and export first file
+    sf::st_read(here::here(input, files[1]), quiet = TRUE) |>
+      sf::st_write(here::here(output, glue::glue("{name}.gpkg")), nm[1])
+
+    # Add rest of files to geopackage
+    for (i in 2:length(files)) {
+      sf::st_read(here::here(input, files[i]), quiet = TRUE) |>
+        sf::st_write(here::here(output, glue::glue("{name}.gpkg")), nm[i], append = TRUE)
+    }
+  }
+
+  # Formatted data
+  exp_gpkg(
+    input = here::here("data", "ceascf", "data-format"),
+    output = here::here("data", "ceascf", "geopackages"),
+    name = "formatted_data"
+  )
+
+  # Integrated data
+  exp_gpkg(
+    input = here::here("data", "ceascf", "data-integrated"),
+    output = here::here("data", "ceascf", "geopackages"),
+    name = "model_input_data"
+  )
+
+  # Model outputs
+  exp_gpkg(
+    input = here::here("data", "ceascf", "data-output"),
+    output = here::here("data", "ceascf", "geopackages"),
+    name = "model_output_data"
+  )
+
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 }
