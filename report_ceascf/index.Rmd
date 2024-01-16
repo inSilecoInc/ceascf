@@ -32,27 +32,6 @@ suppressWarnings(bookdown::render_book("index.Rmd", "bookdown::gitbook"))
 <img src="https://img.shields.io/badge/Zone-Fluvial-brightgreen">
 -->
 
-
-```{r setup, include = FALSE, purl = FALSE}
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
-  warning = FALSE,
-  echo = FALSE,
-  message = FALSE,
-  dev = "png",
-  dpi = 108,
-  fig.width = 8,
-  fig.height = 6,
-  fig.align = "center",
-  width = 120 # ,
-  # table.attr = 'class="flat-table"'
-)
-
-# Load project package
-library(ceascf)
-```
-
 # {-}
 
 #### inSileco {-}
@@ -77,3 +56,153 @@ Patricia Désilets <br/>
 Patricia.Desilets@ec.gc.ca<br/>
 
 <br/>
+
+```{r setup, include = FALSE, purl = FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  dev = "png",
+  dpi = 108,
+  fig.width = 8,
+  fig.height = 6,
+  fig.align = "center",
+  width = 120 # ,
+  # table.attr = 'class="flat-table"'
+)
+
+# Load project package
+library(ceascf)
+
+# Stressors and VCs
+st <- read.csv("../data/data-metadata/metadata_stresseurs.csv")
+cvf <- read.csv("../data/data-metadata/metadata_composantes_valorisees.csv")
+
+# Filtered data
+uid <- data.frame(
+  data = c(
+    "0004",
+    "0005",
+    "0006",
+    "0008",
+    "0011",
+    "0012",
+    "0013",
+    "0014",
+    "0015",
+    "0016",
+    "0017",
+    "0018",
+    "0019",
+    "0020",
+    "0021",
+    "0029",
+    # "0032",
+    "0033",
+    "0034",
+    "0035",
+    "0036",
+    "0037",
+    "0038",
+    "0039",
+    "0041",
+    "0042",
+    "0043",
+    "0046",
+    "0047",
+    "0049",
+    "0052",
+    "0053",
+    # "0055",
+    "0058",
+    "0059",
+    "0060",
+    "0062",
+    # "0066",
+    # "0067",
+    # "0068",
+    "0069",
+    "0070",
+    "0071",
+    "0073",
+    "0074",
+    "0075",
+    "0076",
+    "0077",
+    "0078",
+    "0079",
+    "0080",
+    "0081",
+    "0082",
+    "0083",
+    "0084"
+  )
+)
+
+# Raw data
+meta <- read.csv("../data/data-metadata/data_summary.csv", colClasses = c("id" = "character")) |>
+  dplyr::filter(id %in% uid$data) |>
+  dplyr::select(id, name, temp, src)
+
+# Valued components
+cv <- read.csv("../data/data-metadata/metadata_composantes_valorisees.csv")
+cvid <- lapply(uid$data, function(x) stringr::str_detect(cv$source, x)) |>
+  dplyr::bind_cols() |>
+  apply(1, any)
+cv <- cv[cvid, ]
+
+type <- data.frame(
+  cv = c(
+    "habitat",
+    "habitat",
+    "habitat",
+    "habitat",
+    "habitat",
+    "habitat",
+    "habitat",
+    "habitat",
+    "habitat",
+    "habitat",
+    "berge",
+    "site"
+  ),
+  src = c(
+    "0017",
+    "0013,0014",
+    "0053",
+    "0087,0073,0074,0075,0076",
+    "0043,0058",
+    "0057,0078,0079,0081",
+    "0059",
+    "0060",
+    "0077",
+    "0084",
+    "0017",
+    "0030,0038,0039,0082"
+  ),
+  link = c(
+    "milieux-côtiers",
+    "zones-inondables",
+    "milieux-humides",
+    "fray%C3%A8res-et-sites-dalevinage",
+    "oiseaux",
+    "gisements-coquilliers",
+    "esp%C3%A8ces-fauniques-et-floristiques-%C3%A0-statut",
+    "esp%C3%A8ces-fauniques-et-floristiques-%C3%A0-statut",
+    "esp%C3%A8ces-fauniques-et-floristiques-%C3%A0-statut",
+    "herbiers-aquatiques",
+    "berge",
+    "milieux-protégés"
+  )
+)
+
+# Create links
+report <- "https://effetscumulatifsnavigation.github.io/Rapport/portrait.html#"
+for (i in seq_len(nrow(type))) {
+  uid <- cv$comp_val == type$cv[i] & cv$source == type$src[i]
+  cv$simple[uid] <- glue::glue("[{cv$simple[uid]}]({report}{type$link[i]})")
+}
+```
+

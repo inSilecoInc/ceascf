@@ -1,80 +1,10 @@
 # Données et composantes valorisées sélectionnées 
 
-```{r data}
-uid <- data.frame(
-  data = c(
-    "0004",
-    "0005",
-    "0006",
-    "0008",
-    "0011",
-    "0012",
-    "0013",
-    "0014",
-    "0015",
-    "0016",
-    "0017",
-    "0018",
-    "0019",
-    "0020",
-    "0021",
-    "0029",
-    # "0032",
-    "0033",
-    "0034",
-    "0035",
-    "0036",
-    "0037",
-    "0038",
-    "0039",
-    "0041",
-    "0042",
-    "0043",
-    "0046",
-    "0047",
-    "0049",
-    "0052",
-    "0053",
-    # "0055",
-    "0058",
-    "0059",
-    "0060",
-    "0062",
-    # "0066",
-    # "0067",
-    # "0068",
-    "0069",
-    "0070",
-    "0071",
-    "0073",
-    "0074",
-    "0075",
-    "0076",
-    "0077",
-    "0078",
-    "0079",
-    "0080",
-    "0081",
-    "0082",
-    "0083",
-    "0084"
-  )
-)
+Le livrable 1 du projet a été réalisé par l'équipe du Service Canadien de la Faune et visait à identifier les bases de données d'intérêt utilisées pour l'évaluation des effets cumulatifs des activités maritimes au sein du Saint-Laurent et du Saguenay. Ces données ont été utilisées afin de caractériser les stresseurs environnementaux et les composantes valorisées au dein de l'évaluation originale. Pour le présent projet, l'entièreté des données ayant permis de caractériser les stresseurs environnementaux de l'évaluation originale ont été conservée pour le présent projet. Les bases de données identifiées par le Service Canadien de la Faune ont ainsi été utilisées afin d'identifier les composantes d'intérêt à utiliser en vue d'effetuer l'évaluation filtrée des effets cumulatifs (voir section [résultats](#resultats)). 
 
-# Raw data
-meta <- read.csv("../data/data-metadata/data_summary.csv", colClasses = c("id" = "character")) |>
-  dplyr::filter(id %in% uid$data) |>
-  dplyr::select(id, name, temp, src)
+## Bases de données
 
-# Valued components
-cv <- read.csv("../data/data-metadata/metadata_composantes_valorisees.csv")
-cvid <- lapply(uid$data, function(x) stringr::str_detect(cv$source, x)) |>
-  dplyr::bind_cols() |>
-  apply(1, any)
-cv <- cv[cvid, ]
-```
-
-Le livrable 1 du projet a été réalisé par l'équipe du Service Canadien de la Faune et visait à identifier les bases de données d'intérêt utilisées pour l'évaluation des effets cumulatifs des activités maritimes au sein du Saint-Laurent et du Saguenay. L'entièreté des données ayant permis de caractériser les stresseurs environnementaux de l'évaluation originale ont été conservée pour le présent projet; le filtre a plutôt été effectué sur les composantes valorisées. Un total de `r nrow(meta)` bases de données utilisées afin de caractériser divers composantes valorisées et stresseurs environnementaux au sein de l'évaluation originale ont été identifiées (Tableau \@ref(tab:datasummary)). Les données identifiées par le Service Canadien de la Faune ont été utilisées afin de caractériser `r nrow(cv)` composantes valorisées au sein de l'évaluation originale (Tableau \@ref(tab:cv)). L'évaluation filtrée a ainsi été effectuée sur ces composantes valorisées (voir section [résultats](#resultats)).
+Un total de `r nrow(meta)` bases de données utilisées afin de caractériser divers composantes valorisées et stresseurs environnementaux au sein de l'évaluation originale ont été identifiées (Tableau \@ref(tab:datasummary)). 
 
 <br>
 
@@ -86,8 +16,13 @@ knitr::kable(meta,
 )
 ```
 
-
 <br>
+
+## Composantes valorisées
+
+Les données identifiées par le Service Canadien de la Faune ont été utilisées afin de caractériser `r nrow(cv)` composantes valorisées au sein de l'évaluation originale (Tableau \@ref(tab:cv)).
+
+<br> 
 
 ```{r cv}
 tab <- select(cv, title, type, simple, source) %>%
