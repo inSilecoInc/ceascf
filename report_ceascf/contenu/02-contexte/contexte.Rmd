@@ -1,6 +1,6 @@
 # Contexte
 
-Dans le cadre du Plan d'action Saint-Laurent (PASL), le Gouvernement du Canada et le Gouvernement du Québec ont collaboré depuis 2018 à la conception d’un cadre commun d’évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et le Saguenay de concert avec les Premières Nations, divers acteurs du milieu maritime et les collectivités côtières. 
+Dans le cadre du Plan d'Action Saint-Laurent (PASL), le Gouvernement du Canada et le Gouvernement du Québec ont collaboré depuis 2018 à la conception d’un cadre commun d’évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et le Saguenay de concert avec les Premières Nations, divers acteurs du milieu maritime et les collectivités côtières. 
 
 À titre de co-responsable du projet, Transports Canada a mandaté une équipe de l’Université Laval pour la conception d'un projet pilote dont l'objectif était de proposer et de mettre à l’essai un cadre méthodologique d’évaluation des effets cumulatifs au sein d'une zone d'étude qui couvrait le Saint-Laurent (tronçon fluvial et estuaire) et la rivière Saguenay (partie en eau profonde). Ce projet pilote se concentrait sur l'évaluation des effets cumulatifs de 7 stresseurs environnementaux issus des activités maritimes sur 5 composantes valorisées identifiées au préalable lors d’activités de concertation et d’ateliers de travail avec des experts du milieu et les collaborateurs identifiés précédemment. 
 
@@ -10,21 +10,21 @@ L’analyse effectuée a permis de caractériser et de cartographier certaines c
 
 L'analyse a été finalisée et présentée en 2022, puis mise à jour en 2023. Le travail effectué est disponible en ligne sous forme de [compendium de recherche](https://github.com/EffetsCumulatifsNavigation/ceanav), d'un rapport d'analyse ([version française](https://effetscumulatifsnavigation.github.io/Rapport/); [version anglaise](https://effetscumulatifsnavigation.github.io/Report/)) et d'un webinaire public ([version française](https://effetscumulatifsnavigation.github.io/2022-03-TC-webinaire_ceanav/); [version anglaise](https://effetscumulatifsnavigation.github.io/2022-03-TC-webinar_ceanav/#1)). 
 
-Suite à la complétion de cette évaluation, le Service Canadien de la Faune a eu pour mandat d'effectuer sa propre évaluation des effets cumulatifs par l'Agence d'évaluation d'impact du Canada dans le cadre d'une évaluation régionale des effets cumulatifs au sein du Saint-Laurent. En vue de valoriser le travail déjà effectué dans la région pour évaluer les effets cumulatifs et pour accélérer les étapes initiales des travaux du Service Canadien de la Faune, inSileco a été mandaté afin de filter l'évaluation originale en ne considérant que les composantes valorisées identifiées d'intérêt pour le Service Canadien de la Faune. 
+Suite à cette évaluation, le Service Canadien de la Faune a eu pour mandat d'effectuer sa propre évaluation des effets cumulatifs par l'Agence d'évaluation d'impact du Canada dans le cadre d'une évaluation régionale des effets cumulatifs au sein du Saint-Laurent. En vue de valoriser le travail déjà effectué dans la région pour évaluer les effets cumulatifs et pour accélérer les étapes initiales des travaux du Service Canadien de la Faune, inSileco a été mandaté afin de filtrer l'évaluation originale en ne considérant que les composantes valorisées identifiées d'intérêt pour le Service Canadien de la Faune. 
 
 Plus spécifiquement, les livrables du contrat étaient les suivants: 
 
 1. Identification des composantes valorisées d’intérêt pour le Service Canadien de la Faune qui ont été incluses à l’évaluation effectuée pour Transports Canada. La liste complète des données utilisées est disponible à l'adresse suivante : https://effetscumulatifsnavigation.github.io/Rapport/annexe1.html. (Travail effectué par l'équipe du Service Canadien de la Faune)
 
-2. Extraction des données et résultats de l'évaluation des effets cumulatifs de la navigation sur les composantes valorisées identifiées au livrable 1. Ce livrable prendra la forme d'une geodatabase (.gpkg) ayant une projection NAD 1983 Quebec Lambert Conique Conforme et incluant les composantes valorisées identifiées au livrable 1 et un rapport sommaire (.pdf) présentant les résultats de l'évaluation des effets cumulatifs relatifs aux composantes valorisées sélectionnées.
+2. Extraction des données et résultats de l'évaluation des effets cumulatifs de la navigation sur les composantes valorisées identifiées au livrable 1. Ce livrable prend la forme d'une geodatabase (.gpkg) ayant une projection NAD 1983 Quebec Lambert Conique Conforme et incluant les composantes valorisées identifiées au livrable 1 et un rapport sommaire (.pdf) présentant les résultats de l'évaluation des effets cumulatifs relatifs aux composantes valorisées sélectionnées.
 
 3. Réunion avec l’équipe du Service Canadien de la Faune ayant pour objectif :   
    - Présentation des données et des résultats du projet effectué pour Transports Canada  
-   - Présentation des composantes d'intétêt qui seraient d’intérêt pour le travail du Service Canadien de la Faune     
+   - Présentation des composantes d'intérêt qui seraient d’intérêt pour le travail du Service Canadien de la Faune     
    - Présentation des résultats de l'extraction effectuée au livrable 2  
    - Discussion et identification des besoins pour la suite du travail du Service Canadien de la Faune  
 
-Les données utilisées en intrant du modèle d'évaluation des effets cumulatifs, la méthode utilisées ainsi que les principaux résultats de l'évaluation ont été décrits en détails au sein du rapport d'évaluation. Nous redirigeons ainsi les lecteurs directement vers le [rapport d'évaluation](https://effetscumulatifsnavigation.github.io/Rapport/) afin d'obtenir de plus amples informations sur le travail effectué. Afin de faciliter cette exploration, nous fournissons ici une version épurée de la table des matières de l'évaluation identifiant des sections particulièrement pertinentes pour le présent projet :
+Les données utilisées en intrant du modèle d'évaluation des effets cumulatifs, la méthode utilisées ainsi que les principaux résultats de l'évaluation ont été décrits en détail au sein du rapport d'évaluation original. Nous redirigeons ainsi les lecteurs directement vers ce [rapport d'évaluation](https://effetscumulatifsnavigation.github.io/Rapport/) afin d'obtenir de plus amples informations sur le travail effectué. Afin de faciliter cette exploration, nous fournissons ici une version épurée de la table des matières de l'évaluation identifiant des sections particulièrement pertinentes pour le présent projet :
 
 - [Sommaire](https://effetscumulatifsnavigation.github.io/Rapport/sommaire.html)
 - [Contexte du projet](https://effetscumulatifsnavigation.github.io/Rapport/contexte.html)
@@ -37,4 +37,6 @@ Les données utilisées en intrant du modèle d'évaluation des effets cumulatif
 - [Résultats](https://effetscumulatifsnavigation.github.io/Rapport/resultats.html)
 - [Limites et perspectives](https://effetscumulatifsnavigation.github.io/Rapport/perspective.html)
 
-Le présent rapport présente un sommaire de ces travaux. Les données spatiales en format *geopackage* et en projection NAD 1983 Quebec Lambert Conique Conforme (epsg:32198) utilisées en intrant du modèle d'évaluation ainsi que les sorties filtrées du modèle accompagnent également ce rapport.
+Le présent rapport présente un sommaire des travaux. Les données spatiales en format *geopackage* et en projection NAD 1983 Quebec Lambert Conique Conforme (epsg:32198) utilisées en intrant du modèle d'évaluation ainsi que les sorties filtrées du modèle accompagnent également ce rapport.
+
+

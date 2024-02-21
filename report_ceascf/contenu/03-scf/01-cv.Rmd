@@ -1,10 +1,10 @@
 # Données et composantes valorisées sélectionnées 
 
-Le livrable 1 du projet a été réalisé par l'équipe du Service Canadien de la Faune et visait à identifier les bases de données d'intérêt utilisées pour l'évaluation des effets cumulatifs des activités maritimes au sein du Saint-Laurent et du Saguenay. Ces données ont été utilisées afin de caractériser les stresseurs environnementaux et les composantes valorisées au dein de l'évaluation originale. Pour le présent projet, l'entièreté des données ayant permis de caractériser les stresseurs environnementaux de l'évaluation originale ont été conservée pour le présent projet. Les bases de données identifiées par le Service Canadien de la Faune ont ainsi été utilisées afin d'identifier les composantes d'intérêt à utiliser en vue d'effetuer l'évaluation filtrée des effets cumulatifs (voir section [résultats](#resultats)). 
+Le livrable 1 du projet a été réalisé par l'équipe du Service Canadien de la Faune et visait à identifier les bases de données d'intérêt utilisées pour l'évaluation des effets cumulatifs des activités maritimes au sein du Saint-Laurent et du Saguenay. Ces données ont été utilisées afin de caractériser les stresseurs environnementaux et les composantes valorisées au sein de l'évaluation originale. Pour le présent projet, l'entièreté des données ayant permis de caractériser les stresseurs environnementaux de l'évaluation originale a été conservée. Les bases de données identifiées par le Service Canadien de la Faune ont ainsi été utilisées afin d'identifier les composantes d'intérêt à utiliser en vue d'effectuer l'évaluation filtrée des effets cumulatifs (voir section [résultats](#resultats)). 
 
 ## Bases de données
 
-Un total de `r nrow(meta)` bases de données utilisées afin de caractériser divers composantes valorisées et stresseurs environnementaux au sein de l'évaluation originale ont été identifiées (Tableau \@ref(tab:datasummary)). 
+Un total de `r nrow(meta)` bases de données utilisées afin de caractériser diverses composantes valorisées et stresseurs environnementaux au sein de l'évaluation originale ont été identifiées (Tableau \@ref(tab:datasummary)). 
 
 <br>
 
