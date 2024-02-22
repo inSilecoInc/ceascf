@@ -75,6 +75,7 @@ knitr::opts_chunk$set(
 
 # Load project package
 library(ceascf)
+library(glue)
 
 # Stressors and VCs
 st <- read.csv("../data/data-metadata/metadata_stresseurs.csv")
