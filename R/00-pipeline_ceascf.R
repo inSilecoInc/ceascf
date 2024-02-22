@@ -254,12 +254,12 @@ pipeline_ceascf <- function() {
       config_file = "_bookdown.yml"
     )
 
-    # PDF format
-    bookdown::render_book(
-      input = "index.Rmd",
-      output_format = "bookdown::pdf_book",
-      config_file = "_bookdown.yml"
-    )
+    # # PDF format
+    # bookdown::render_book(
+    #   input = "index.Rmd",
+    #   output_format = "bookdown::pdf_book",
+    #   config_file = "_bookdown.yml"
+    # )
 
     setwd("../")
   })
