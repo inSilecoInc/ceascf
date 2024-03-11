@@ -61,7 +61,7 @@ class: inverse, center, middle
 ### Méthode d'analyse 
 ### Portrait 
 ### Résultats
-### Limites & perspectives
+### Autres initiatives
 
 
 ---
@@ -137,7 +137,7 @@ class: inverse, center, middle
 ### Méthode d'analyse
 ### Portrait 
 ### Résultats
-### Limites & perspectives
+### Autres initiatives
 
 ---
 # Portée de l'évaluation
@@ -192,7 +192,7 @@ class: inverse, center, middle
 #### Méthode d'analyse
 ### Portrait 
 ### Résultats
-### Limites & perspectives
+### Autres initiatives
 
 ---
 # Méthode d'analyse
@@ -254,7 +254,7 @@ class: inverse, center, middle
 ### Méthode d'analyse
 #### Portrait 
 ### Résultats
-### Limites & perspectives
+### Autres initiatives
 
 ---
 # Portrait: Stresseurs environnementaux 
@@ -548,7 +548,7 @@ class: inverse, center, middle
 ### Méthode d'analyse
 ### Portrait 
 #### Résultats
-### Limites & perspectives
+### Autres initiatives
 
 ---
 
@@ -653,17 +653,450 @@ class: inverse, center, middle
 ### Méthode d'analyse
 ### Portrait 
 ### Résultats
-#### Limites & perspectives
+#### Autres initiatives
+
+---
+class: inverse, center, middle 
+
+# Effets cumulatifs et réseaux trophiques
+<html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
+
+---
+# Effets cumulatifs et réseaux trophiques
+
+<center><img src="figures/1_2-species.png" width="100%"></img></center>
+
+.references[
+Halpern et al. 2008; Halpern et al. 2015
+]
 
 
+---
+# Effets cumulatifs et réseaux trophiques
+
+.pull-left2[
+## Interactions écologiques
+
+**Effets indirects**
+
+- Loutres
+- Oursins
+- Laminaires
+]
+
+.pull-right2[
+<center><img src="figures/context/estes2.png" width="70%"></img></center>
+]
+
+.references[
+Estes et Palmisano 1974; Paine 1980; Abrams 1992;  Estes et al. 2011
+]
+
+---
+# Effets cumulatifs et réseaux trophiques
+
+.pull-left2[
+## Interactions écologiques
+
+**Effets indirects**
+
+- Loutres
+- Oursins
+- Laminaires
+
+**Importance**
+
+- Peuvent être aussi importantes que les effets directs
+]
+
+.pull-right2[
+<center><img src="figures/context/estes2.png" width="70%"></img></center>
+]
+
+.references[
+Wootton 1993, 2002; Menge 1995; Yodzis 2000
+]
+
+---
+# Effets cumulatifs et réseaux trophiques
+
+.pull-left2[
+## Interactions écologiques
+
+**Effets indirects**
+
+- Loutres
+- Oursins
+- Laminaires
+
+**Importance**
+
+- Peuvent être aussi importantes que les effets directs
+
+**Propagation des effets**
+
+- Structure du réseau
+- Position trophique
+]
+
+.pull-right2[
+<center><img src="figures/context/estes2.png" width="70%"></img></center>
+]
+
+.references[
+Wootton 2002; Bascompte 2009; Montoya et al. 2009; O’Gorman et Emmerson 2009; O’Gorman et al. 2012
+]
+
+---
+# Effets cumulatifs et réseaux trophiques
+
+.pull-left2[
+## Interactions écologiques
+
+**Effets indirects**
+
+- Loutres
+- Oursins
+- Laminaires
+
+**Importance**
+
+- Peuvent être aussi importantes que les effets directs
+
+**Propagation des effets**
+
+- Structure du réseau
+- Position trophique
+]
+
+.pull-right2[
+<center><img src="figures/method/6-ncea.png" width="80%"></img></center>
+]
 
 
+.references[
+[Beauchesne 2023](https://www.researchsquare.com/article/rs-3296860/v1)
+]
 
 
+---
+# Effets cumulatifs et réseaux trophiques
+
+<center><img src="https://assets.researchsquare.com/files/rs-3296860/v1/5ab04d2207d1bd595554f211.png?maxDims=1200x1200" width="80%"></img></center>
+
+.references[
+[Beauchesne 2023](https://www.researchsquare.com/article/rs-3296860/v1)
+]
+
+---
+# Effets cumulatifs et réseaux trophiques
+
+<center><img src="figures/bioregions.png" width="50%"></img></center>
 
 
+---
+# Effets cumulatifs et réseaux trophiques
+
+.pull-left[
+## Saint-Laurent &nbsp;<a href="https://www.researchsquare.com/article/rs-3296860/v1" target="_blank">`r bk()`</a>
+
+- *Stresseurs*
+  - Climat (6)
+  - Terrestre (5)
+  - Pêcheries (5)
+  - Navigation (2)
+- *Espèces*
+  - Benthos et poissons (169)
+  - Mammifères marins (24)
+]
 
 
+.pull-right[
+## Plateau néo-écossais &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/" target="_blank">`r bk()`</a>
+
+- *Stresseurs environnementaux*
+  - Climat (4) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#drclimate" target="_blank">`r bk()`</a>
+  - Terrestre (6) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#drcoastal" target="_blank">`r bk()`</a>
+  - Pêcheries (5) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#drfisheries" target="_blank">`r bk()`</a>
+  - Navigation (1) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#drmarinetraffic" target="_blank">`r bk()`</a>
+- *Espèces*
+  - Benthos et poissons (172) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#marinesp" target="_blank">`r bk()`</a>
+  - Mammifères marins (8) &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#marinemammals" target="_blank">`r bk()`</a>
+  - ***Oiseaux marins (25)*** &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/report/modules.html#seabirds" target="_blank">`r bk()`</a>
+
+<center><a href = "https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/sea_birds.png?raw=true" target = "_blank"><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/sea_birds.png?raw=true" width="60%"></img></a></center>
+
+]
+
+.references[
+[Beauchesne 2023](https://www.researchsquare.com/article/rs-3296860/v1);
+[Beauchesne et al. 2023](https://ecosystem-assessments.github.io/nceadfo/)
+]
+
+---
+# Effets cumulatifs et réseaux trophiques
+
+.pull-left[
+## Saint-Laurent &nbsp;<a href="https://www.researchsquare.com/article/rs-3296860/v1" target="_blank">`r bk()`</a>
+
+<br>
+
+<center><img src="figures/nceastl.png" width="100%"></img></center>
+]
+
+
+.pull-right[
+## Plateau néo-écossais &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/" target="_blank">`r bk()`</a>
+
+<br>
+
+<center><img src="figures/nceadfo.png" width="100%"></img></center>
+]
+
+.references[
+[Beauchesne 2023](https://www.researchsquare.com/article/rs-3296860/v1);
+[Beauchesne et al. 2023](https://ecosystem-assessments.github.io/nceadfo/)
+]
+
+---
+# Effets cumulatifs et réseaux trophiques
+
+.pull-left[
+## Saint-Laurent &nbsp;<a href="https://www.researchsquare.com/article/rs-3296860/v1" target="_blank">`r bk()`</a>
+
+<br>
+
+<center><img src="figures/metanetwork_nceastl.png" width="100%"></img></center>
+]
+
+
+.pull-right[
+## Plateau néo-écossais &nbsp;<a href="https://ecosystem-assessments.github.io/nceadfo/" target="_blank">`r bk()`</a>
+
+<br>
+
+<center><img src="https://github.com/Ecosystem-Assessments/nceadfo/blob/main/figures/webinar/metanetwork-Total_2016_2021.png?raw=true" width="100%"></img></center>
+]
+
+.references[
+[Beauchesne 2023](https://www.researchsquare.com/article/rs-3296860/v1);
+[Beauchesne et al. 2023](https://ecosystem-assessments.github.io/nceadfo/)
+]
+
+---
+class: inverse, center, middle 
+
+# Sciences des données & reproductibilité
+<html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
+
+---
+# Science des données et reproductibilité 
+
+.pull-left[
+## Gestion des connaissances
+
+- Vastes connaissances requises
+
+- Généralement réparti entre de nombreux experts
+
+- Temps dédié à :
+   - Rechercher des informations pertinentes
+   - Développer des collaborations
+   - Formatage et structuration des données
+
+- **S'efforcer de faciliter la réutilisation et les utilisations secondaires**
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/data.png" width="100%"></img></center>
+]
+
+---
+# Science des données et reproductibilité 
+
+.pull-left[
+## Gestion des connaissances
+
+- Mouvement important vers un partage ouvert des connaissances
+
+- Archivage et accès en ligne (ex. [Gouvernement ouvert](https://open.canada.ca/fr))
+
+- Avantages :
+   - Reproductibilité
+   - Transparence
+   - Efficacité
+   - Optimisation des investissements
+   - Promouvoir les connaissances
+   - Collaborations
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/data.png" width="100%"></img></center>
+]
+
+
+---
+# Science des données et reproductibilité 
+
+.pull-left[
+## L'ère des supermarchés de données !
+
+- Archivage des données
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/data.png" width="100%"></img></center>
+]
+
+---
+# Science des données et reproductibilité 
+
+.pull-left[
+## L'ère des supermarchés de données !
+
+- Archivage des données
+
+## Où est Ricardo ?
+
+- Pipelines analytiques reproductibles
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/data2.png" width="100%"></img></center>
+]
+
+---
+# Science des données et reproductibilité 
+
+## Flux de travail reproductibles
+
+.pull-left[
+- ***Transparence & reproductibilité***
+   - `r rp()` &nbsp; &nbsp; `r gh()`
+- ***Tous les codes associés à :***
+   - Accéder aux données brutes
+   - Le formatage des données
+   - Analyses
+   - Chiffres et tableaux
+   - Rapport
+   - Cette présentation
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/workflow1.png" width="100%"></img></center>
+]
+
+---
+# Science des données et reproductibilité 
+
+## Flux de travail reproductibles
+
+.pull-left[
+- ***Transparence & reproductibilité***
+   - `r rp()` &nbsp; &nbsp; `r gh()`
+- ***Tous les codes associés à :***
+   - Accéder aux données brutes
+   - Le formatage des données
+   - Analyses
+   - Chiffres et tableaux
+   - Rapport
+   - Cette présentation
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/workflow2.png" width="100%"></img></center>
+]
+
+---
+# Science des données et reproductibilité 
+
+## Flux de travail reproductibles
+
+.pull-left[
+- ***Transparence & reproductibilité***
+   - `r rp()` &nbsp; &nbsp; `r gh()`
+- ***Tous les codes associés à :***
+   - Accéder aux données brutes
+   - Le formatage des données
+   - Analyses
+   - Chiffres et tableaux
+   - Rapport
+   - Cette présentation
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/workflow3.png" width="100%"></img></center>
+]
+
+---
+# Science des données et reproductibilité 
+
+## Flux de travail reproductibles
+
+.pull-left[
+- ***Transparence & reproductibilité***
+   - `r rp()` &nbsp; &nbsp; `r gh()`
+- ***Tous les codes associés à :***
+   - Accéder aux données brutes
+   - Le formatage des données
+   - Analyses
+   - Chiffres et tableaux
+   - Rapport
+   - Cette présentation
+- ***Avantages***
+   - Processus structuré, reproductible et transparent
+   - Réutiliser les flux de travail entre les projets
+   - Efficacité accrue (semaines à minutes)
+]
+
+.pull-right[
+<center><img src="figures/reproducibility/workflow3.png" width="100%"></img></center>
+]
+
+---
+# Science des données et reproductibilité 
+
+## Compendiums de recherche
+
+<br> 
+
+<a href='https://github.com/EffetsCumulatifsNavigation/ceanav'><img src='https://github.com/EffetsCumulatifsNavigation/ceanav/raw/main/man/figures/logo.png' align="center" height="200" style="padding-left: 140px;"/></a>
+<a href='https://github.com/Ecosystem-Assessments/nceastl'><img src='https://github.com/Ecosystem-Assessments/nceastl/raw/science/man/figures/logo.png' align="center" height="200" style="padding-left: 20px; padding-right: 20px;"/></a>
+<a href='https://github.com/Ecosystem-Assessments/nceadfo'><img src='https://github.com/Ecosystem-Assessments/nceadfo/raw/main/man/figures/logo.png' align="center" height="200"/></a>
+
+
+---
+class: inverse, center, middle 
+
+# Applications interactives
+<html><div style='float:left'></div><hr color='#ffdd55' style="margin-top:-30px" size=1px width=720px></html>
+
+---
+# eDrivers
+
+<center><a href="https://david-beauchesne.shinyapps.io/edriversapp_dev/"><img src="figures/reproducibility/eDrivers.png" width="90%"></img></a></center>
+
+---
+# Effets cumulatifs mammifères marins
+
+<video width="100%" height="100%" controls>
+  <source src="https://cloud.insileco.io/nextcloud/index.php/s/DitJ3Ex5eEbBJS6/download/Screencast%20from%202024-03-04%2016-50-26.webm" type="video/mp4">
+</video>
+
+---
+# Rapports reproductibles
+
+<video width="100%" height="100%" controls>
+  <source src="https://cloud.insileco.io/nextcloud/index.php/s/DitJ3Ex5eEbBJS6/download/Screencast%20from%202024-03-04%2016-50-26.webm" type="video/mp4">
+</video>
+
+
+---
+# Mouvements oiseaux 
+
+<video width="100%" height="100%" controls>
+  <source src="https://cloud.insileco.io/nextcloud/index.php/s/DitJ3Ex5eEbBJS6/download/Screencast%20from%202024-03-04%2016-50-26.webm" type="video/mp4">
+</video>
 
 
 ---
