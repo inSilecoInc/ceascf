@@ -1,3 +1,0 @@
-# Bibliographie {-}
-
-<!-- <div id="refs"></div> -->

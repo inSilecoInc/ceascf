@@ -1,0 +1,8 @@
+\documentclass[12pt,a4paper]{article}
+ \usepackage{multido}
+ \usepackage[hmargin=.8cm,vmargin=1.5cm,nohead,nofoot]{geometry}
+ \begin{document}
+ \multido{}{54}{\vphantom{x}\newpage}
+ \end{document}
+
+% tinytex::pdflatex('page_number.tex')

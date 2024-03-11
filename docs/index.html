@@ -1,251 +1,166 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
-<head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Extraction de données et filtre de l’évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et la rivière Saguenay pour le Servica Canadien de la Faune</title>
-  <meta name="description" content="Extraction de données et filtre de l’évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et la rivière Saguenay pour le Servica Canadien de la Faune" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Extraction de données et filtre de l’évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et la rivière Saguenay pour le Servica Canadien de la Faune" />
-  <meta property="og:type" content="book" />
-  
-  
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Extraction de données et filtre de l’évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et la rivière Saguenay pour le Servica Canadien de la Faune" />
-  
-  
-  
-
-<meta name="author" content="David Beauchesne, Kevin Cazelles, Steve Vissault" />
-
-
-<meta name="date" content="2024-02-21" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-
-<link rel="next" href="sommaire.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+  <head>
+    <title>Extraction de données et filtre de l’évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et la rivière Saguenay pour le Servica Canadien de la Faune</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="David Beauchesne, Kevin Cazelles, Steve Vissault" />
+    <script src="assets/header-attrs/header-attrs.js"></script>
+    <link href="assets/remark-css/default.css" rel="stylesheet" />
+    <link href="assets/remark-css/hygge.css" rel="stylesheet" />
+    <script src="assets/clipboard/clipboard.min.js"></script>
+    <link href="assets/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="assets/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #37abc8\"><\/i>","error":"Press Ctrl+C to Copy"})</script>
+    <link href="assets/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="assets/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="rd.css" type="text/css" />
+    <link rel="stylesheet" href="rd-font.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
 
 
 
 
 
+class: title-slide, middle
 
 
+# Extraction de données et filtre de l'évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et la rivière Saguenay pour le Servica Canadien de la Faune
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KEZPM5NXLP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+&lt;span class="br2"&gt;&lt;/span&gt;
 
-  gtag('config', 'G-KEZPM5NXLP');
-</script>
+&lt;center&gt;
+&lt;a href ="report/index.html"&gt;&lt;img src="figures/report.png" width="45%"&gt;&lt;/a&gt;
+&lt;a href ="webinar/index.html"&gt;&lt;img src="figures/webinar.png" width="45%"&gt;&lt;/a&gt;
+&lt;/img&gt;&lt;/center&gt;
 
+&lt;span class="br2"&gt;&lt;/span&gt;
 
+&lt;center&gt;&lt;i&gt;David Beauchesne, Kevin Cazelles, Steve Vissault&lt;/i&gt;&lt;/center&gt;
 
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 1em;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
+&lt;span class="br2"&gt;&lt;/span&gt;
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-</head>
+&lt;center&gt;
+&lt;a href="https://www.insileco.io/"&gt;&lt;img src="figures/logo_light.png" width="100px"&gt;&lt;/img&gt;&lt;/a&gt;
+&lt;/center&gt;
 
-<body>
-
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Effets cumulatifs - activités maritimes</a></li>
-
-<li class="divider"></li>
-<li><a href="index.html#section"></a></li>
-<li class="chapter" data-level="" data-path="sommaire.html"><a href="sommaire.html"><i class="fa fa-check"></i>Sommaire</a></li>
-<li class="chapter" data-level="1" data-path="contexte.html"><a href="contexte.html"><i class="fa fa-check"></i><b>1</b> Contexte</a></li>
-<li class="chapter" data-level="2" data-path="données-et-composantes-valorisées-sélectionnées.html"><a href="données-et-composantes-valorisées-sélectionnées.html"><i class="fa fa-check"></i><b>2</b> Données et composantes valorisées sélectionnées</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="données-et-composantes-valorisées-sélectionnées.html"><a href="données-et-composantes-valorisées-sélectionnées.html#bases-de-données"><i class="fa fa-check"></i><b>2.1</b> Bases de données</a></li>
-<li class="chapter" data-level="2.2" data-path="données-et-composantes-valorisées-sélectionnées.html"><a href="données-et-composantes-valorisées-sélectionnées.html#composantes-valorisées"><i class="fa fa-check"></i><b>2.2</b> Composantes valorisées</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="resultats.html"><a href="resultats.html"><i class="fa fa-check"></i><b>3</b> Résultats de l’évaluation</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="resultats.html"><a href="resultats.html#strcumresult"><i class="fa fa-check"></i><b>3.1</b> Stresseurs et hotspots cumulés</a></li>
-<li class="chapter" data-level="3.2" data-path="resultats.html"><a href="resultats.html#cvcumresult"><i class="fa fa-check"></i><b>3.2</b> Composantes valorisées cumulées</a></li>
-<li class="chapter" data-level="3.3" data-path="resultats.html"><a href="resultats.html#cumexpresult"><i class="fa fa-check"></i><b>3.3</b> Exposition cumulée</a></li>
-<li class="chapter" data-level="3.4" data-path="resultats.html"><a href="resultats.html#cearesult"><i class="fa fa-check"></i><b>3.4</b> Effets cumulatifs</a></li>
-<li class="chapter" data-level="3.5" data-path="resultats.html"><a href="resultats.html#chemins-deffet"><i class="fa fa-check"></i><b>3.5</b> Chemins d’effet</a></li>
-<li class="chapter" data-level="3.6" data-path="resultats.html"><a href="resultats.html#régions-administratives"><i class="fa fa-check"></i><b>3.6</b> Régions administratives</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i>Bibliographie</a></li>
-<li class="divider"></li>
-<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Extraction de données et filtre de l’évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et la rivière Saguenay pour le Servica Canadien de la Faune</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Extraction de données et filtre de l’évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et la rivière Saguenay pour le Servica Canadien de la Faune</h1>
-<p class="author"><em>David Beauchesne, Kevin Cazelles, Steve Vissault</em></p>
-<p class="date"><em>2024-02-21</em></p>
-</div>
-<div id="section" class="section level1 unnumbered">
-<h1 class="unnumbered"></h1>
-<div id="insileco" class="section level4 unnumbered hasAnchor">
-<h4>inSileco<a href="index.html#insileco" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>David Beauchesne, Ph.D. <br/>
-<a href="mailto:david.beauchesne@insileco.io" class="email">david.beauchesne@insileco.io</a><br/></p>
-<p><br/></p>
-<p>Kevin Cazelles, Ph.D. <br/>
-<a href="mailto:kevin.cazelles@insileco.io" class="email">kevin.cazelles@insileco.io</a><br/></p>
-<p><br/></p>
-<p>Steve Vissault, M.Sc.<br/>
-<a href="mailto:steve.vissault@insileco.io" class="email">steve.vissault@insileco.io</a><br/></p>
-</div>
-<div id="service-canadien-de-la-faune" class="section level4 unnumbered hasAnchor">
-<h4>Service Canadien de la Faune<a href="index.html#service-canadien-de-la-faune" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Patricia Désilets <br/>
-<a href="mailto:Patricia.Desilets@ec.gc.ca" class="email">Patricia.Desilets@ec.gc.ca</a><br/></p>
-<p><br/></p>
-
-</div>
-</div>
-            </section>
-
-          </div>
-        </div>
-      </div>
-
-<a href="sommaire.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": true,
-"facebook": false,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/index.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["bookdown.pdf", "bookdown.epub", "bookdown.mobi"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": false
-}
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "dracula",
+"countIncrementalSlides": false
 });
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
 });
-</script>
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
 
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
 </script>
-</body>
-
+  </body>
 </html>
