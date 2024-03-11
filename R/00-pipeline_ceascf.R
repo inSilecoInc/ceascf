@@ -244,7 +244,7 @@ pipeline_ceascf <- function() {
   # Publications
   render_frontpage()
   render_report()
-  render_prez()
+  render_webinar()
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 

@@ -1,0 +1,6 @@
+# source('./code/studyarea.R')
+library(ceanav)
+png('./Figures/studyarea.png', res = 900, width = 175, height = 120, units = "mm")
+par(mar = c(0,0,0,0), bg = 'transparent')
+plot(st_geometry(studyarea))
+dev.off()
