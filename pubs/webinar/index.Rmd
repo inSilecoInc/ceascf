@@ -487,14 +487,14 @@ class: inverse, center, middle
          0077,0084<br>
       </div>
       <div class="divPortraitCell">
-        <a href="figures/cumulative_cv_habitat.png" target="_blank">
-          <img src="figures/cumulative_cv_habitat.png" style="width: 300px"></img>
+        <a href="https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_cv_habitat.png?raw=true" target="_blank">
+          <img src="https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_cv_habitat.png?raw=true" style="width: 300px"></img>
         </a>
       </div>
       <div class="divPortraitData">0017</div>
       <div class="divPortraitCell">
-        <a href="figures/cumulative_cv_berge.png" target="_blank">
-          <img src="figures/cumulative_cv_berge.png" style="width: 300px"></img>
+        <a href="https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_cv_berge.png?raw=true" target="_blank">
+          <img src="https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_cv_berge.png?raw=true" style="width: 300px"></img>
         </a>
       </div>
     </div>
@@ -507,7 +507,7 @@ class: inverse, center, middle
       </div>
       <div class="divPortraitCell"></div>
       <div class="divPortraitTitle">
-        <b>Sites d'intérêt cultirels, patrimoniaux <br>et archéologiques</b> (1) &nbsp;<a href="https://effetscumulatifsnavigation.github.io/Rapport/portrait.html#habitat" target="_blank">`r bk()`</a>
+        <b>Sites d'intérêt cultirels, patrimoniaux <br>et archéologiques</b> (1) &nbsp;<a href="https://effetscumulatifsnavigation.github.io/Rapport/portrait.html#site" target="_blank">`r bk()`</a>
       </div>
     </div>
     
@@ -521,8 +521,8 @@ class: inverse, center, middle
         0039,0082<br>
       </div>
       <div class="divPortraitCell">
-        <a href="figures/cumulative_cv_site.png" target="_blank">
-          <img src="figures/cumulative_cv_site.png" style="width: 300px"></img>
+        <a href="https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_cv_site.png?raw=true" target="_blank">
+          <img src="https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_cv_site.png?raw=true" style="width: 300px"></img>
         </a>      
       </div>
     </div>
@@ -587,7 +587,7 @@ class: inverse, center, middle
 ]
 .pull-right2[
 <br>
-[<center><img src="https://insileco.io/ceascf/figures/ceascf/figures-output/cumulative_cv.png" width="100%"></img></center>](https://insileco.io/ceascf/figures/ceascf/figures-output/cumulative_cv.png)
+[<center><img src="https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_cv.png?raw=true" width="100%"></img></center>](https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_cv.png?raw=true)
 ]
 
 ---
@@ -606,7 +606,7 @@ class: inverse, center, middle
 ]
 .pull-right2[
 <br>
-[<center><img src="https://insileco.io/ceascf/figures/ceascf/figures-output/cumulative_effects.png" width="100%"></img></center>](https://insileco.io/ceascf/figures/ceascf/figures-output/cumulative_effects.png)
+[<center><img src="https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_effects.png?raw=true" width="100%"></img></center>](https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_effects.png?raw=true)
 ]
 
 ---
@@ -621,7 +621,7 @@ class: inverse, center, middle
 ]
 
 .pull-right2[
-[<center><img src="https://insileco.io/ceascf/figures/ceascf/figures-output/cumulative_effects_metanetwork.png" width="100%"></img></center>](https://insileco.io/ceascf/figures/ceascf/figures-output/cumulative_effects_metanetwork.png)
+[<center><img src="https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_effects_metanetwork.png?raw=true" width="100%"></img></center>](https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_effects_metanetwork.png?raw=true)
 ]
 
 
@@ -639,7 +639,7 @@ class: inverse, center, middle
 - .font90[Chevauchement au sein de milieux les plus affectés comme le lac Saint-Pierre]
 ]
 
-[<center><img src="https://insileco.io/ceascf/figures/ceascf/figures-output/cumulative_effects_regional_contribution.png" width="80%"></img></center>](https://insileco.io/ceascf/figures/ceascf/figures-output/cumulative_effects_regional_contribution.png)
+[<center><img src="https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_effects_regional_contribution.png?raw=true" width="80%"></img></center>](https://github.com/inSilecoInc/ceascf/blob/main/figures/ceascf/figures-output/cumulative_effects_regional_contribution.png?raw=true)
 
 ---
 class: inverse, center, middle
