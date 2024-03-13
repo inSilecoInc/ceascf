@@ -1,0 +1,79 @@
+# Sommaire {-}
+
+```{r sommairesetup, echo = FALSE}
+st$stresseur <- gsub("_", "", st$stresseur)
+cv$comp_val <- gsub("_", "", cv$comp_val)
+
+src <- function(dat) {
+  paste(dat$source, collapse = ",") %>%
+    str_split(",") %>%
+    unlist() %>%
+    unique() %>%
+    length()
+}
+report <- "https://effetscumulatifsnavigation.github.io/Rapport/portrait.html"
+ct1 <- function(dat) {
+  dat %>%
+    group_by(title, stresseur) %>%
+    summarize(tot = n()) %>%
+    apply(., 1., function(x) glue("[{x[1]}]({report}#{x[2]}) ({x[3]})")) %>%
+    gsub("\\( ", "\\(", .) %>%
+    paste(collapse = "; ") # %>%
+  # tolower()
+}
+
+ct2 <- function(dat) {
+  dat %>%
+    group_by(title, comp_val) %>%
+    summarize(tot = n()) %>%
+    apply(., 1., function(x) glue("[{x[1]}]({report}#{x[2]}) ({x[3]})")) %>%
+    gsub("\\( ", "\\(", .) %>%
+    paste(collapse = "; ") # %>%
+  # tolower()
+}
+```
+
+Dans le cadre du Plan d'Action Saint-Laurent (PASL), le Gouvernement du Canada et le Gouvernement du Québec collaborent depuis 2018 à la conception d’un cadre commun d’évaluation des effets cumulatifs des activités maritimes sur le Saint-Laurent et le Saguenay de concert avec les Premières Nations, divers acteurs du milieu maritime et les collectivités côtières. Une équipe de l’Université Laval pour la conception d'un projet pilote dont l'objectif était de proposer et de mettre à l’essai un cadre méthodologique d’évaluation des effets cumulatifs au sein d'une zone d'étude qui couvrait le Saint-Laurent (tronçon fluvial et estuaire) et la rivière Saguenay (partie en eau profonde). Ce projet pilote se concentrait sur l'évaluation des effets cumulatifs de 7 stresseurs environnementaux issus des activités maritimes sur 5 composantes valorisées identifiées au préalable lors d’activités de concertation et d’ateliers de travail avec des experts du milieu et les collaborateurs identifiés précédemment. L'évaluation effectuée a permis de caractériser et de cartographier certaines composantes valorisées, d’évaluer la vulnérabilité de ces composantes à de multiples facteurs de stress liés aux activités maritimes, et finalement d’évaluer les effets cumulatifs à partir de la cartographie produite. L'analyse a été finalisée et présentée en 2022 et subséquemment mise à jour en 2023; elle est accessible sous forme de [compendium de recherche](https://github.com/EffetsCumulatifsNavigation/ceanav), d'un [rapport d'analyse](https://effetscumulatifsnavigation.github.io/Rapport/) et de [webinaire](https://effetscumulatifsnavigation.github.io/2022-03-TC-webinaire_ceanav/). 
+
+Suite à cette évaluation, le Service Canadien de la Faune a eu pour mandat d'effectuer sa propre évaluation des effets cumulatifs par l'Agence d'évaluation d'impact du Canada dans le cadre d'une évaluation régionale des effets cumulatifs au sein du Saint-Laurent. En vue de valoriser le travail déjà effectué dans la région pour évaluer les effets cumulatifs et pour accélérer les étapes initiales des travaux du Service Canadien de la Faune, inSileco a été mandaté afin de filtrer l'évaluation originale en ne considérant que les composantes valorisées identifiées d'intérêt pour le Service Canadien de la Faune. Plus spécifiquement, les livrables du contrat étaient 1) d'dentifier des composantes valorisées d'intérêt pour le Service Canadien de la Faune, 2) d'extraire les données et résultats pour les composantes valorisées sélectionnées et 3) de présenter ces résultats lors d'une réunion de travail avec l'équipe du Service Canadien de la Faune. Le présent rapport touche les livrables 1 et 2 du contrat. 
+
+L'équipe du Service Canadien de la Faune a identifié un total de `r nrow(meta)` bases de données d'intérêt ayant permis la caractérisation des stresseurs environnementaux et des composantes valorisées de l'évaluation complète. L'ensemble des stresseurs environnementaux de l'évaluation complète ont été utilisés pour ce projet. Cette caractérisation est issue de l'intégration de `r src(st)` bases de données et résulté en la description de `r length(unique(st$title))` stresseurs divisés en `r nrow(st)` sous-catégories : `r ct1(st)`. La caractérisation des composantes valorisées sélectionnées par le Service Canadien de la Faune a quant à elle été effectuée à partir de l'intégration de `r src(cv)` bases de données et résulté en la description de `r length(unique(cv$title))` composantes valorisées divisées en `r nrow(cv)` sous-catégories : `r ct2(cv)`. 
+
+Nous présentons ici les constats généraux issus de l'évaluation des effets cumulatifs filtrée en points de forme:
+
+- **Distribution des stresseurs environnementaux issus des activités maritimes**
+  - L'ensemble de la zone d'étude est exposé aux stresseurs environnementaux;
+  - Les grandes villes portuaires et la voie navigable sont particulièrement exposées aux stresseurs cumulés;
+  - La navigation et la pollution maritime sont les stresseurs les plus répandus dans la zone d'étude.
+
+<br/>
+
+- **Distribution des composantes valorisées**
+  - Le secteur fluvial est caractérisé par une diversité importante de composantes valorisées;
+  - Les milieux côtiers présentent une diversité plus importante de composantes valorisées;
+  - La région du lac Saint-Pierre est particulièrement riche en composantes valorisées;
+  - Dans le secteur maritime, seuls quelques habitats et des zones de conservation sont présents en milieux côtiers.
+
+<br/>
+
+- **Distribution des effets cumulatifs**
+  - Les effets cumulatifs sont particulièrement intenses et concentrés au sein du secteur fluvial; les effets y sont plus intenses dans les régions de Québec, du lac Saint-Pierre et du chenal de navigation entre Trois-Rivières et Montréal;
+  - Les effets cumulatifs sont plus diffus au sein du secteur maritime; les effets les plus intenses sont situés à l'embouchure de la rivière Saguenay.
+
+  <br/>
+
+- **Stresseurs environnementaux les plus importants**
+  - La navigation et la pollution maritime ont les effets prédits les plus importants à l'échelle régionale puisqu'ils sont les stresseurs les plus répandus au sein de la zone d'étude;
+  - Les pêches commerciales affectent certaines catégories de composantes valorisées plus intensément, comme plusieurs  habitats du milieu fluvial et les gisements coquilliers du milieu maritime;
+  - Les sites d'ancrage, les déversements accidentels et les activités de dragage ont des effets localisés sur certaines composantes valorisées. Ces stresseurs, bien que moins répandus, ajoutent leurs effets à ceux de la navigation et de la pollution maritime et sont généralement présents au sein des milieux qui sont les plus affectés par les effets cumulatifs (*e.g.* lac Saint-Pierre).
+
+  <br/>
+
+- **Composantes valorisées les plus affectées**
+  - L'intégrité des berges au sein du secteur fluvial est particulièrement affectée par la navigation, et ce particulièrement au sein du lac Saint-Pierre;
+  - Les habitats considérés sont affectés par une diversité importante de stresseurs environnementaux et il y a une diversité importante au niveau des effets totaux prédits entre les différents types d'habitats.
+
+  <br/>
+
+- **Régions administratives les plus affectées**
+  - Les régions administratives du secteur fluvial sont les plus affectées par les effets cumulatifs des activités maritimes, un constat particulièrement important pour la Montérégie et Montréal. Ces effets sont influencés majoritairement par la navigation marchande (e.g. pétrolier, cargaison sèche, cargo et porte-conteneurs), la pêche commerciale et la pollution maritime.

@@ -241,35 +241,11 @@ pipeline_ceascf <- function() {
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
-  # Report
-  chk_create("./report_ceascf/figures/")
-  file.copy("./figures/ceascf/", "./report_ceascf/figures/", recursive = TRUE)
-  suppressWarnings({
-    setwd("./report_ceascf/")
+  # Publications
+  render_frontpage()
+  render_report()
+  render_webinar()
 
-    # HTML format
-    bookdown::render_book(
-      input = "index.Rmd",
-      output_format = "bookdown::gitbook",
-      config_file = "_bookdown.yml"
-    )
-
-    # # PDF format
-    # bookdown::render_book(
-    #   input = "index.Rmd",
-    #   output_format = "bookdown::pdf_book",
-    #   config_file = "_bookdown.yml"
-    # )
-
-    setwd("../")
-  })
-
-  # WARNING: Temporary pipeline to export report only to another repo.
-  # TODO: This is not reproducible and should be removed from the pipeline as soon as this
-  #       repository can be made available publicly
-  unlink("./report_ceascf/figures/", recursive = TRUE)
-  unlink("./docs/", recursive = TRUE)
-  file.copy("./report_ceascf/docs", "./", recursive = TRUE) # uncomment
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~
 
   # =~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~=~-~

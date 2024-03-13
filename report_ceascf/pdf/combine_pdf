@@ -1,2 +1,0 @@
-pdftk p1.pdf p2.pdf p3.pdf p4.pdf p5.pdf p6.pdf cat output final.pdf
-pdftk final.pdf multibackground page_number.pdf output rapport_ceascf.pdf
