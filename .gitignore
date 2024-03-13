@@ -64,7 +64,7 @@ figures/figures-output/*.png
 figures/figures-vulnerability/*.png
 figures/figures-exploration
 report/figures/figures-exploration/
-figures/ceascf/
+# figures/ceascf/
 
 
 # Figures english----
